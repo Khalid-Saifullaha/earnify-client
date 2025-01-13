@@ -12,6 +12,9 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
 
+  // Assuming user.coins is the available coin value (you can change this based on your data structure)
+  const availableCoins = user?.coins || 0;
+
   return (
     <div className="fixed w-full bg-white z-10 shadow-sm">
       <div className="py-4 border-b-[1px]">
@@ -31,13 +34,21 @@ const Navbar = () => {
                 Home
               </Link>
               {user ? (
-                <>
+                <div className="flex items-center gap-6">
+                  {/* Dashboard Link */}
                   <Link
                     to="/dashboard"
                     className="text-sm font-medium text-gray-600 hover:text-gray-900 transition"
                   >
                     Dashboard
                   </Link>
+
+                  {/* Available Coins */}
+                  <div className="text-sm font-medium text-gray-600">
+                    Available Coins: {availableCoins}
+                  </div>
+
+                  {/* User Profile and Logout */}
                   <div className="relative">
                     <img
                       src={user.photoURL || avatarImg}
@@ -61,6 +72,8 @@ const Navbar = () => {
                       </div>
                     )}
                   </div>
+
+                  {/* Join as Developer */}
                   <a
                     href="https://github.com/your-client-repo"
                     target="_blank"
@@ -69,9 +82,10 @@ const Navbar = () => {
                   >
                     Join as Developer
                   </a>
-                </>
+                </div>
               ) : (
                 <>
+                  {/* Links for Non-Logged-in Users */}
                   <Link
                     to="/login"
                     className="text-sm font-medium text-gray-600 hover:text-gray-900 transition"
@@ -115,12 +129,20 @@ const Navbar = () => {
                     </Link>
                     {user ? (
                       <>
+                        {/* Dashboard Link */}
                         <Link
                           to="/dashboard"
                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         >
                           Dashboard
                         </Link>
+
+                        {/* Available Coins for Mobile */}
+                        <div className="block px-4 py-2 text-sm text-gray-700">
+                          Available Coins: {availableCoins}
+                        </div>
+
+                        {/* User Profile & Logout */}
                         <div className="flex items-center gap-2 px-4 py-2">
                           <img
                             src={user.photoURL || avatarImg}
@@ -137,6 +159,8 @@ const Navbar = () => {
                         >
                           Logout
                         </button>
+
+                        {/* Join as Developer */}
                         <a
                           href="https://github.com/your-client-repo"
                           target="_blank"
