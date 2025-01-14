@@ -33,7 +33,9 @@ const TopWorker = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold text-center mb-6">Top Workers</h2>
+      <h2 className="text-2xl font-bold text-center text-gray-500 mb-6">
+        Top Workers
+      </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {workers.map((worker) => (
           <div
@@ -41,7 +43,7 @@ const TopWorker = () => {
             className="bg-white shadow-md p-4 rounded-lg text-center"
           >
             <img
-              src={worker.image || "https://via.placeholder.com/100"} // Fallback for missing image
+              src={worker.image || "https://via.placeholder.com/100"}
               alt={worker.name}
               className="w-24 h-24 mx-auto rounded-full mb-2"
             />
