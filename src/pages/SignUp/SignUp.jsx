@@ -1,19 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
+
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
 import { TbFidgetSpinner } from "react-icons/tb";
-import axios from "axios";
+
 import { imageUpload } from "../../api/utils";
+import axios from "axios";
 
 const SignUp = () => {
-  const {
-    createUser,
-    updateUserProfile,
-    signInWithGoogle,
-    loading,
-    addUserToDatabase,
-  } = useAuth();
+  const { createUser, updateUserProfile, loading } = useAuth();
   const navigate = useNavigate();
 
   // form submit handler
@@ -26,10 +21,10 @@ const SignUp = () => {
     const role = form.role.value;
     const image = form.image.files[0];
 
-    // send image data to imgbb
+    // Upload the image
     const photoURL = await imageUpload(image);
 
-    // Input validation
+    // Validate email and password
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{6,}$/;
 
@@ -46,39 +41,29 @@ const SignUp = () => {
     }
 
     try {
-      // User Registration
+      // Register the user
       const result = await createUser(email, password);
 
-      // Save username & profile photo
+      // Update user profile with name and photo
       await updateUserProfile(name, photoURL);
-      console.log(result);
 
-      // // Assign default coins based on the selected role
-      // const defaultCoins = role === "worker" ? 10 : 50;
+      // Determine initial coins based on role
+      const coins = role === "worker" ? 10 : role === "buyer" ? 50 : 0;
 
-      // // Add user to the database
-      // await addUserToDatabase(result.user.uid, name, email, role, defaultCoins);
+      // Add the user to the database with role and coins
+      await axios.post(`${import.meta.env.VITE_API_URL}/users/${email}`, {
+        name,
+        email,
+        image: photoURL,
+        role,
+        coins,
+      });
 
-      // console.log(result);
-
+      // Navigate to home and show success message
       navigate("/");
       toast.success("Signup Successful");
     } catch (err) {
-      console.log(err);
-      toast.error(err?.message);
-    }
-  };
-
-  // Handle Google Signin
-  const handleGoogleSignIn = async () => {
-    try {
-      // User Registration using google
-      await signInWithGoogle();
-
-      navigate("/");
-      toast.success("Signup Successful");
-    } catch (err) {
-      console.log(err);
+      console.error(err);
       toast.error(err?.message);
     }
   };
@@ -184,19 +169,10 @@ const SignUp = () => {
         </form>
         <div className="flex items-center pt-4 space-x-1">
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
-          <p className="px-3 text-sm dark:text-gray-400">
-            Signup with social accounts
-          </p>
+
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
-        <div
-          onClick={handleGoogleSignIn}
-          className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer"
-        >
-          <FcGoogle size={32} />
 
-          <p>Continue with Google</p>
-        </div>
         <p className="px-6 text-sm text-center text-gray-400">
           Already have an account?{" "}
           <Link

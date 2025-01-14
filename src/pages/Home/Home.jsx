@@ -1,5 +1,5 @@
-import { Helmet } from 'react-helmet-async'
-import Plants from '../../components/Home/Plants'
+import { Helmet } from "react-helmet-async";
+import Plants from "../../components/Home/Plants";
 
 const Home = () => {
   return (
@@ -9,7 +9,7 @@ const Home = () => {
       </Helmet>
       <Plants />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

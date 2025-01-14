@@ -1,8 +1,9 @@
 // Import necessary modules and libraries
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import useAuth from "../../../hooks/useAuth";
+import axios from "axios"; // Added axios import
 import Container from "../Container";
 import avatarImg from "../../../assets/images/placeholder.jpg";
 import logo from "../../../assets/images/logo-flat.png";
@@ -11,9 +12,27 @@ const Navbar = () => {
   const { user, logOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [availableCoins, setAvailableCoins] = useState(0); // State to store coins
 
-  // Assuming user.coins is the available coin value (you can change this based on your data structure)
-  const availableCoins = user?.coins || 0;
+  // Fetch coins when user is logged in
+  useEffect(() => {
+    const fetchCoins = async () => {
+      if (user?.email) {
+        try {
+          console.log("Fetching coins for user:", user.email); // Debug
+          const response = await axios.get(
+            `${import.meta.env.VITE_API_URL}/users/${user.email}`
+          );
+          console.log("Response from API:", response.data); // Debug
+          setAvailableCoins(response.data?.coins || 0);
+        } catch (error) {
+          console.error("Error fetching coins:", error); // Debug
+        }
+      }
+    };
+
+    fetchCoins();
+  }, [user]);
 
   return (
     <div className="fixed w-full bg-white z-10 shadow-sm">
@@ -107,95 +126,6 @@ const Navbar = () => {
                     Join as Developer
                   </a>
                 </>
-              )}
-            </div>
-
-            {/* Dropdown Menu for Smaller Screens */}
-            <div className="relative md:hidden">
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="p-2 border border-gray-300 rounded-full focus:outline-none hover:shadow-md"
-              >
-                <AiOutlineMenu size={20} />
-              </button>
-              {isOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-20">
-                  <div className="py-1">
-                    <Link
-                      to="/"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Home
-                    </Link>
-                    {user ? (
-                      <>
-                        {/* Dashboard Link */}
-                        <Link
-                          to="/dashboard"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        >
-                          Dashboard
-                        </Link>
-
-                        {/* Available Coins for Mobile */}
-                        <div className="block px-4 py-2 text-sm text-gray-700">
-                          Available Coins: {availableCoins}
-                        </div>
-
-                        {/* User Profile & Logout */}
-                        <div className="flex items-center gap-2 px-4 py-2">
-                          <img
-                            src={user.photoURL || avatarImg}
-                            alt="User Avatar"
-                            className="h-6 w-6 rounded-full border border-gray-300"
-                          />
-                          <span className="text-sm text-gray-700">
-                            {user.displayName || "User"}
-                          </span>
-                        </div>
-                        <button
-                          onClick={logOut}
-                          className="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        >
-                          Logout
-                        </button>
-
-                        {/* Join as Developer */}
-                        <a
-                          href="https://github.com/your-client-repo"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block px-4 py-2 text-sm text-blue-500 hover:underline"
-                        >
-                          Join as Developer
-                        </a>
-                      </>
-                    ) : (
-                      <>
-                        <Link
-                          to="/login"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        >
-                          Login
-                        </Link>
-                        <Link
-                          to="/signup"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        >
-                          Sign Up
-                        </Link>
-                        <a
-                          href="https://github.com/your-client-repo"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block px-4 py-2 text-sm text-blue-500 hover:underline"
-                        >
-                          Join as Developer
-                        </a>
-                      </>
-                    )}
-                  </div>
-                </div>
               )}
             </div>
           </div>
