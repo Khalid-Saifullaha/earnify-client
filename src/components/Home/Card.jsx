@@ -3,11 +3,9 @@ import { Link } from "react-router-dom";
 const Card = ({ task }) => {
   const {
     task_title,
-    task_detail,
     required_workers,
     payable_amount,
     completion_date,
-    submission_info,
     image: imageUrl,
     buyer,
     _id,

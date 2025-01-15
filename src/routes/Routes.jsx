@@ -3,10 +3,8 @@ import Home from "../pages/Home/Home";
 import ErrorPage from "../pages/ErrorPage";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
-import PlantDetails from "../pages/PlantDetails/PlantDetails";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../layouts/DashboardLayout";
-
 import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import Profile from "../pages/Dashboard/Common/Profile";
 import Statistics from "../pages/Dashboard/Common/Statistics";
@@ -16,6 +14,7 @@ import ManageOrders from "../pages/Dashboard/Buyer/ManageOrders";
 import MyOrders from "../pages/Dashboard/Customer/MyOrders";
 
 import AddTask from "../pages/Dashboard/Buyer/AddTask";
+import TaskDetails from "../pages/TaskDetails/TaskDetails";
 
 export const router = createBrowserRouter([
   {
@@ -29,7 +28,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/plant/:id",
-        element: <PlantDetails />,
+        element: <TaskDetails></TaskDetails>,
       },
     ],
   },
