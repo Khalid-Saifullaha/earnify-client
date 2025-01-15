@@ -11,10 +11,11 @@ import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import Profile from "../pages/Dashboard/Common/Profile";
 import Statistics from "../pages/Dashboard/Common/Statistics";
 import MainLayout from "../layouts/MainLayout";
-import MyInventory from "../pages/Dashboard/Seller/MyInventory";
-import ManageOrders from "../pages/Dashboard/Seller/ManageOrders";
+import MyInventory from "../pages/Dashboard/Buyer/MyInventory";
+import ManageOrders from "../pages/Dashboard/Buyer/ManageOrders";
 import MyOrders from "../pages/Dashboard/Customer/MyOrders";
-import Add from "../pages/Dashboard/Seller/Add";
+
+import AddTask from "../pages/Dashboard/Buyer/AddTask";
 
 export const router = createBrowserRouter([
   {
@@ -51,10 +52,10 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "add-plant",
+        path: "add-task",
         element: (
           <PrivateRoute>
-            <Add></Add>
+            <AddTask></AddTask>
           </PrivateRoute>
         ),
       },

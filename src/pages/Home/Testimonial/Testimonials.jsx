@@ -56,13 +56,13 @@ const Testimonials = () => {
 
   return (
     <section className="my-20">
-      <h2 className="text-2xl font-bold text-gray-500 text-center mb-6">
+      <h2 className="text-2xl font-bold text-gray-500 text-center ">
         Testimonial
       </h2>
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         {reviews.map((review) => (
           <SwiperSlide key={review.id}>
-            <div className="flex flex-col items-center m-24 my-16 bg-white p-8 rounded-lg shadow-lg">
+            <div className="flex flex-col items-center m-24 my-16 bg-white p-8 rounded-lg shadow-none">
               {/* User Image */}
               <img
                 src={review.image}

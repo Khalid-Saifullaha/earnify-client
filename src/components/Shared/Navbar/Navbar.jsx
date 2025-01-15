@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import useAuth from "../../../hooks/useAuth";
-import axios from "axios"; // Added axios import
+import axios from "axios";
 import Container from "../Container";
 import avatarImg from "../../../assets/images/placeholder.jpg";
 import logo from "../../../assets/images/logo-flat.png";
@@ -12,21 +12,21 @@ const Navbar = () => {
   const { user, logOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
-  const [availableCoins, setAvailableCoins] = useState(0); // State to store coins
+  const [availableCoins, setAvailableCoins] = useState(0);
 
   // Fetch coins when user is logged in
   useEffect(() => {
     const fetchCoins = async () => {
       if (user?.email) {
         try {
-          console.log("Fetching coins for user:", user.email); // Debug
+          console.log("Fetching coins for user:", user.email);
           const response = await axios.get(
             `${import.meta.env.VITE_API_URL}/users/${user.email}`
           );
-          console.log("Response from API:", response.data); // Debug
+          console.log("Response from API:", response.data);
           setAvailableCoins(response.data?.coins || 0);
         } catch (error) {
-          console.error("Error fetching coins:", error); // Debug
+          console.error("Error fetching coins:", error);
         }
       }
     };
@@ -94,7 +94,7 @@ const Navbar = () => {
 
                   {/* Join as Developer */}
                   <a
-                    href="https://github.com/your-client-repo"
+                    href="https://github.com/Khalid-Saifullaha"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm font-medium text-blue-500 hover:underline"
@@ -118,7 +118,7 @@ const Navbar = () => {
                     Sign Up
                   </Link>
                   <a
-                    href="https://github.com/your-client-repo"
+                    href="https://github.com/Khalid-Saifullaha"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm font-medium text-blue-500 hover:underline"

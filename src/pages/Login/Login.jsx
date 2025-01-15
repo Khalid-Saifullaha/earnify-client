@@ -4,15 +4,40 @@ import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { TbFidgetSpinner } from "react-icons/tb";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner";
+import axios from "axios";
 
 const Login = () => {
   const { signIn, signInWithGoogle, loading, user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
+
   if (user) return <Navigate to={from} replace={true} />;
   if (loading) return <LoadingSpinner />;
-  // form submit handler
+
+  // Save user in the database
+  const saveUserToDb = async (email, userData) => {
+    try {
+      const response = await axios.post(`/users/${email}`, userData);
+      return response.data;
+    } catch (error) {
+      console.error("Error saving user to DB:", error);
+      toast.error("Error saving user data");
+    }
+  };
+
+  // Fetch user from the database
+  const fetchUserFromDb = async (email) => {
+    try {
+      const response = await axios.get(`/users/${email}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching user from DB:", error);
+      toast.error("Error fetching user data");
+    }
+  };
+
+  // Form submit handler
   const handleSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
@@ -20,11 +45,25 @@ const Login = () => {
     const password = form.password.value;
 
     try {
-      //User Login
-      await signIn(email, password);
+      // User Login through API
+      const response = await signIn(email, password);
+
+      // Fetch user data from DB (to get role, coins, etc.)
+      const userFromDb = await fetchUserFromDb(email);
+
+      // If user doesn't exist in the database, assign default role 'worker'
+      if (!userFromDb) {
+        const userData = { role: "worker" }; // default role for new users
+        await saveUserToDb(email, userData); // Save new user
+      }
+
+      // Save the role and other user info in the local storage
+      localStorage.setItem("userRole", userFromDb.role || "worker");
+      localStorage.setItem("coins", userFromDb.coins || 10); // Default coins for worker
 
       navigate(from, { replace: true });
       toast.success("Login Successful");
+      navigate("/dashboard");
     } catch (err) {
       console.log(err);
       toast.error(err?.message);
@@ -34,8 +73,22 @@ const Login = () => {
   // Handle Google Signin
   const handleGoogleSignIn = async () => {
     try {
-      //User Registration using google
-      await signInWithGoogle();
+      const response = await signInWithGoogle();
+
+      const userEmail = response.user.email;
+      // Fetch user data from DB (to get role, coins, etc.)
+      const userFromDb = await fetchUserFromDb(userEmail);
+
+      // If user doesn't exist in the database, assign default role 'worker'
+      if (!userFromDb) {
+        const userData = { role: "worker" }; // default role for new users
+        await saveUserToDb(userEmail, userData); // Save new user
+      }
+
+      // Save the role and other user info in the local storage
+      localStorage.setItem("userRole", userFromDb.role || "worker");
+      localStorage.setItem("coins", userFromDb.coins || 10); // Default coins for worker
+
       navigate(from, { replace: true });
       toast.success("Login Successful");
     } catch (err) {
@@ -122,7 +175,6 @@ const Login = () => {
           className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer"
         >
           <FcGoogle size={32} />
-
           <p>Continue with Google</p>
         </div>
         <p className="px-6 text-sm text-center text-gray-400">
