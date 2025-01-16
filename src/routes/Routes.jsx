@@ -10,11 +10,11 @@ import Profile from "../pages/Dashboard/Common/Profile";
 import Statistics from "../pages/Dashboard/Common/Statistics";
 import MainLayout from "../layouts/MainLayout";
 import ManageOrders from "../pages/Dashboard/Buyer/ManageOrders";
-import MyOrders from "../pages/Dashboard/Customer/MyOrders";
 
 import AddTask from "../pages/Dashboard/Buyer/AddTask";
 import TaskDetails from "../pages/TaskDetails/TaskDetails";
 import MyTasks from "../pages/Dashboard/Buyer/MyTasks";
+import MySubmission from "../pages/Dashboard/Worker/MySubmission";
 
 export const router = createBrowserRouter([
   {
@@ -86,7 +86,7 @@ export const router = createBrowserRouter([
         path: "my-orders",
         element: (
           <PrivateRoute>
-            <MyOrders />
+            <MySubmission></MySubmission>
           </PrivateRoute>
         ),
       },

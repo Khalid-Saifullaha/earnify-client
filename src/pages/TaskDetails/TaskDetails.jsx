@@ -16,6 +16,7 @@ const TaskDetails = () => {
   const axiosSecure = useAxiosSecure();
   const [uploadImage, setUploadImage] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [totalWorkers, setTotalWorkers] = useState(1);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,10 +47,16 @@ const TaskDetails = () => {
 
     console.table("Form Data:", submitData);
     setLoading(true);
+    // post request db
     try {
-      const response = await axiosSecure.post("/submit-task", submitData);
-      console.log("Response:", response.data);
+      // save data in db
+      await axiosSecure.post("/submit-task", submitData);
+      //  decrease quantity from task collection
+      await axiosSecure.patch(`/tasks/required_workers/${_id}`, {
+        required_workersToUpdate: totalWorkers,
+      });
       toast.success("Task submitted successfully!");
+      refetch();
     } catch (error) {
       console.error("Error submitting task:", error);
       alert("Failed to submit task. Please try again.");
