@@ -37,7 +37,7 @@ const Card = ({ task }) => {
         </p>
       </div>
       {/* View Details Button */}
-      <Link to={`/plant/${_id}`}>
+      <Link to={`/task/${_id}`}>
         <button className="mt-4 w-full bg-lime-500 hover:bg-lime-600 text-white py-2 px-4 rounded-md">
           View Details
         </button>
