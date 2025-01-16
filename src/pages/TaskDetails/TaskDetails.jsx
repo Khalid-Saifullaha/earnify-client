@@ -7,53 +7,55 @@ import axios from "axios";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner";
 import useAuth from "../../hooks/useAuth";
 import { TbFidgetSpinner } from "react-icons/tb";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const TaskDetails = () => {
   const { user } = useAuth();
   const { id } = useParams();
-
-  const [requiredWorkers, setRequiredWorkers] = useState(null);
+  const axiosSecure = useAxiosSecure();
   const [uploadImage, setUploadImage] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
 
+    const task_id = form.task_id.value;
     const task_title = form.task_title.value;
     const payable_amount = parseFloat(form.payable_amount.value);
     const worker_name = form.worker_name.value;
     const worker_email = form.worker_email.value;
     const buyer_name = form.buyer_name.value;
     const buyer_email = form.buyer_email.value;
-    const submission_details = form.submission_details.value;
-    const imageUrl = uploadImage?.image || null;
     const current_date = new Date().toISOString().split("T")[0];
     const status = "pending";
 
-    const formData = {
+    const submitData = {
+      task_id,
       task_title,
-      task_detail,
       payable_amount,
-      completion_date,
-      submission_info,
-      image: imageUrl,
       worker_name,
+      task_detail,
       worker_email,
       buyer_name,
       buyer_email,
-      submission_details,
       current_date,
       status,
     };
 
-    console.table("Form Data:", formData);
+    console.table("Form Data:", submitData);
     setLoading(true);
-    // Simulate form submission (replace with actual logic)
-    setTimeout(() => {
+    try {
+      const response = await axiosSecure.post("/submit-task", submitData);
+      console.log("Response:", response.data);
+      toast.success("Task submitted successfully!");
+    } catch (error) {
+      console.error("Error submitting task:", error);
+      alert("Failed to submit task. Please try again.");
+    } finally {
       setLoading(false);
-      alert("Form submitted successfully!");
-    }, 2000);
+    }
   };
 
   const {

@@ -1,10 +1,10 @@
 import { Helmet } from "react-helmet-async";
 
-const MyInventory = () => {
+const MyTasks = () => {
   return (
     <>
       <Helmet>
-        <title>My Inventory</title>
+        <title>My Task’s</title>
       </Helmet>
       <div className="container mx-auto px-4 sm:px-8">
         <div className="py-8">
@@ -68,4 +68,4 @@ const MyInventory = () => {
   );
 };
 
-export default MyInventory;
+export default MyTasks;

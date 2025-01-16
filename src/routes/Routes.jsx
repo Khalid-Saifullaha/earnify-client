@@ -9,12 +9,12 @@ import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import Profile from "../pages/Dashboard/Common/Profile";
 import Statistics from "../pages/Dashboard/Common/Statistics";
 import MainLayout from "../layouts/MainLayout";
-import MyInventory from "../pages/Dashboard/Buyer/MyInventory";
 import ManageOrders from "../pages/Dashboard/Buyer/ManageOrders";
 import MyOrders from "../pages/Dashboard/Customer/MyOrders";
 
 import AddTask from "../pages/Dashboard/Buyer/AddTask";
 import TaskDetails from "../pages/TaskDetails/TaskDetails";
+import MyTasks from "../pages/Dashboard/Buyer/MyTasks";
 
 export const router = createBrowserRouter([
   {
@@ -62,7 +62,7 @@ export const router = createBrowserRouter([
         path: "my-inventory",
         element: (
           <PrivateRoute>
-            <MyInventory />
+            <MyTasks></MyTasks>
           </PrivateRoute>
         ),
       },

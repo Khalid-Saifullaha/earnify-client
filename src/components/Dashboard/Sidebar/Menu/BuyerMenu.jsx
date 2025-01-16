@@ -5,7 +5,7 @@ const BuyerMenu = () => {
   return (
     <>
       <MenuItem icon={BsFillHouseAddFill} label="Add Task" address="add-task" />
-      <MenuItem icon={MdHomeWork} label="My Inventory" address="my-inventory" />
+      <MenuItem icon={MdHomeWork} label="My Task’s" address="my-inventory" />
       <MenuItem
         icon={MdOutlineManageHistory}
         label="Manage Orders"
