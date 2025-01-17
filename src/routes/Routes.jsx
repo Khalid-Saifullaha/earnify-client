@@ -63,10 +63,12 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "my-inventory",
+        path: "my-task",
         element: (
           <PrivateRoute>
-            <MyTasks></MyTasks>
+            <BuyerRoute>
+              <MyTasks></MyTasks>
+            </BuyerRoute>
           </PrivateRoute>
         ),
       },
@@ -98,7 +100,13 @@ export const router = createBrowserRouter([
       },
       {
         path: "manage-orders",
-        element: <ManageOrders />,
+        element: (
+          <PrivateRoute>
+            <BuyerRoute>
+              <ManageOrders />
+            </BuyerRoute>
+          </PrivateRoute>
+        ),
       },
     ],
   },

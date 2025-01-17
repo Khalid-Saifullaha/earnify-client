@@ -8,12 +8,13 @@ const Statistics = () => {
   if (isLoading) return <LoadingSpinner />;
   if (role === "worker")
     return <Navigate to="/dashboard/my-submission"></Navigate>;
+  if (role === "buyer") return <Navigate to="/dashboard/my-task"></Navigate>;
   return (
     <div>
       <Helmet>
         <title>Dashboard</title>
       </Helmet>
-      <AdminStatistics />
+      {role === "admin" && <AdminStatistics />}
     </div>
   );
 };

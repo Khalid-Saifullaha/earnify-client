@@ -1,6 +1,25 @@
+import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import UserDataRow from "../../../components/Dashboard/TableRows/UserDataRow";
+import useAuth from "../../../hooks/useAuth";
+import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
 
 const ManageUsers = () => {
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const {
+    data: users = [],
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const { data } = await axiosSecure(`/all-users/${user?.email}`);
+      return data;
+    },
+  });
+  if (isLoading) return <LoadingSpinner />;
   return (
     <>
       <div className="container mx-auto px-4 sm:px-8">
@@ -17,6 +36,18 @@ const ManageUsers = () => {
                       scope="col"
                       className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
                     >
+                      Image
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                    >
+                      Name
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                    >
                       Email
                     </th>
                     <th
@@ -29,18 +60,32 @@ const ManageUsers = () => {
                       scope="col"
                       className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
                     >
-                      Status
+                      Coins
                     </th>
 
                     <th
                       scope="col"
                       className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
                     >
-                      Action
+                      Delete
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                    >
+                      Update Role
                     </th>
                   </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody>
+                  {users.map((userData) => (
+                    <UserDataRow
+                      key={userData?._id}
+                      userData={userData}
+                      refetch={refetch}
+                    ></UserDataRow>
+                  ))}
+                </tbody>
               </table>
             </div>
           </div>
