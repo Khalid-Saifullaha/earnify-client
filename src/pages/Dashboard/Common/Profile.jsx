@@ -1,9 +1,11 @@
 import useAuth from "../../../hooks/useAuth";
 import { Helmet } from "react-helmet-async";
+import useRole from "../../../hooks/useRole";
+import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
 const Profile = () => {
-  const { user } = useAuth();
-
-  console.log(user);
+  const { user, loading } = useAuth();
+  const [role, isLoading] = useRole();
+  if ((loading, isLoading)) return <LoadingSpinner></LoadingSpinner>;
   return (
     <div className="flex justify-center items-center h-screen">
       <Helmet>
@@ -20,7 +22,7 @@ const Profile = () => {
           </a>
 
           <p className="p-2 px-4 text-xs text-white bg-lime-500 rounded-full">
-            Customer
+            {role}
           </p>
           <p className="mt-2 text-xl font-medium text-gray-800 ">
             User Id: {user.uid}

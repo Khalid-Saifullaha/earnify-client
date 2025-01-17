@@ -2,19 +2,20 @@ import { useState } from "react";
 import { GrLogout } from "react-icons/gr";
 import { FcSettings } from "react-icons/fc";
 import { AiOutlineBars } from "react-icons/ai";
-import { BsGraphUp } from "react-icons/bs";
 import MenuItem from "./Menu/MenuItem";
 
 import useAuth from "../../../hooks/useAuth";
 
 import AdminMenu from "./Menu/AdminMenu";
 import { Link } from "react-router-dom";
-import CustomerMenu from "./Menu/CustomerMenu";
 import logo from "../../../assets/images/logo-flat.png";
 import BuyerMenu from "./Menu/BuyerMenu";
+import useRole from "../../../hooks/useRole";
+import WorkerMenu from "./Menu/WorkerMenu";
 const Sidebar = () => {
   const { logOut } = useAuth();
   const [isActive, setActive] = useState(false);
+  const [role, isLoading] = useRole();
 
   // Sidebar Responsive Handler
   const handleToggle = () => {
@@ -71,15 +72,9 @@ const Sidebar = () => {
           <div className="flex flex-col justify-between flex-1 mt-6">
             <nav>
               {/*  Menu Items */}
-              <CustomerMenu />
-              <BuyerMenu></BuyerMenu>
-
-              <MenuItem
-                icon={BsGraphUp}
-                label="Statistics"
-                address="/dashboard"
-              />
-              <AdminMenu />
+              {role === "worker" && <WorkerMenu />}
+              {role === "buyer" && <BuyerMenu />}
+              {role === "admin" && <AdminMenu />}
             </nav>
           </div>
         </div>

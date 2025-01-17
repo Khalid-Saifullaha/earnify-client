@@ -1,7 +1,7 @@
 import Container from "../../components/Shared/Container";
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import LoadingSpinner from "../../components/Shared/LoadingSpinner";
@@ -13,6 +13,7 @@ import toast from "react-hot-toast";
 const TaskDetails = () => {
   const { user } = useAuth();
   const { id } = useParams();
+  const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
   const [uploadImage, setUploadImage] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -57,6 +58,7 @@ const TaskDetails = () => {
       });
       toast.success("Task submitted successfully!");
       refetch();
+      navigate("/dashboard/my-submission");
     } catch (error) {
       console.error("Error submitting task:", error);
       alert("Failed to submit task. Please try again.");

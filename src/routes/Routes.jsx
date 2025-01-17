@@ -15,6 +15,8 @@ import AddTask from "../pages/Dashboard/Buyer/AddTask";
 import TaskDetails from "../pages/TaskDetails/TaskDetails";
 import MyTasks from "../pages/Dashboard/Buyer/MyTasks";
 import MySubmission from "../pages/Dashboard/Worker/MySubmission";
+import BuyerRoute from "./BuyerRoute";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -54,7 +56,9 @@ export const router = createBrowserRouter([
         path: "add-task",
         element: (
           <PrivateRoute>
-            <AddTask></AddTask>
+            <BuyerRoute>
+              <AddTask></AddTask>
+            </BuyerRoute>
           </PrivateRoute>
         ),
       },
@@ -70,7 +74,9 @@ export const router = createBrowserRouter([
         path: "manage-users",
         element: (
           <PrivateRoute>
-            <ManageUsers />
+            <AdminRoute>
+              <ManageUsers />
+            </AdminRoute>
           </PrivateRoute>
         ),
       },
@@ -83,7 +89,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "my-orders",
+        path: "my-submission",
         element: (
           <PrivateRoute>
             <MySubmission></MySubmission>

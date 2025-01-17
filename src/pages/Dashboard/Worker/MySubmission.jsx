@@ -3,7 +3,6 @@ import useAuth from "../../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
-import MySubmissionDataRow from "../../../components/Dashboard/TableRows/MySubmissionDataRow";
 
 const MySubmission = () => {
   const { user } = useAuth();
