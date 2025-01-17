@@ -10,18 +10,17 @@ import { useNavigate } from "react-router-dom";
 const AddTask = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const navigate = useNavigate(); // For navigation
+  const navigate = useNavigate();
   const [uploadImage, setUploadImage] = useState({
     image: { name: "Upload Button" },
   });
-  const [requiredWorkers, setRequiredWorkers] = useState(0); // State for workers
-  const [payableAmount, setPayableAmount] = useState(0); // State for payable amount
+  const [requiredWorkers, setRequiredWorkers] = useState(0);
+  const [payableAmount, setPayableAmount] = useState(0);
   const [loading, setLoading] = useState(false);
 
-  const totalPayable = requiredWorkers * payableAmount; // Calculate total payable
+  const totalPayable = requiredWorkers * payableAmount;
 
-  // Fetch user's coin balance (this would come from your backend or context)
-  const userCoins = user?.coins || 100; // Replace with actual user coins from context or API
+  const userCoins = user?.coins || 100;
 
   // Handle form submit
   const handleSubmit = async (e) => {
@@ -38,7 +37,7 @@ const AddTask = () => {
 
     // Check if user has enough coins
     if (totalPayable > userCoins) {
-      alert("Not enough coins. Purchase more coins.");
+      toast.error("Not enough coins. Purchase more coins.");
       navigate("/purchase-coin");
       return;
     }
@@ -76,6 +75,7 @@ const AddTask = () => {
 
       // Show success toast
       toast.success("Task added successfully!");
+      navigate("/dashboard/my-task");
     } catch (err) {
       console.error(err);
       toast.error("Failed to add the task. Please try again.");

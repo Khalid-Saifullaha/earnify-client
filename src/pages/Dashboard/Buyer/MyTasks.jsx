@@ -1,6 +1,26 @@
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
+import TaskDataRow from "../../../components/Dashboard/TableRows/TaskDataRow";
+import useAuth from "../../../hooks/useAuth";
 
 const MyTasks = () => {
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const {
+    data: tasks = [],
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["tasks", user?.email],
+    queryFn: async () => {
+      const { data } = await axiosSecure(`/tasks/buyer?email=${user?.email}`);
+
+      return data;
+    },
+  });
+  if (isLoading) return <LoadingSpinner />;
   return (
     <>
       <Helmet>
@@ -58,7 +78,11 @@ const MyTasks = () => {
                     </th>
                   </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody>
+                  {tasks.map((task) => (
+                    <TaskDataRow key={task._id} refetch={refetch} task={task} />
+                  ))}
+                </tbody>
               </table>
             </div>
           </div>

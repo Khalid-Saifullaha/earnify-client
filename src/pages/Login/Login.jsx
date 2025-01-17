@@ -12,8 +12,8 @@ const Login = () => {
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
 
-  if (user) return <Navigate to={from} replace={true} />;
   if (loading) return <LoadingSpinner />;
+  if (user) return <Navigate to={from} replace={true} />;
 
   // Save user in the database
   const saveUserToDb = async (email, userData) => {
