@@ -17,6 +17,7 @@ import MySubmission from "../pages/Dashboard/Worker/MySubmission";
 import BuyerRoute from "./BuyerRoute";
 import AdminRoute from "./AdminRoute";
 import ManageSubmission from "../pages/Dashboard/Buyer/ManageSubmission";
+import PurchaseCoin from "../pages/Dashboard/Buyer/PurchaseCoin";
 
 export const router = createBrowserRouter([
   {
@@ -104,6 +105,16 @@ export const router = createBrowserRouter([
           <PrivateRoute>
             <BuyerRoute>
               <ManageSubmission></ManageSubmission>
+            </BuyerRoute>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "purchase-coin",
+        element: (
+          <PrivateRoute>
+            <BuyerRoute>
+              <PurchaseCoin />
             </BuyerRoute>
           </PrivateRoute>
         ),

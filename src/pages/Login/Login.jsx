@@ -3,7 +3,6 @@ import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { TbFidgetSpinner } from "react-icons/tb";
-import LoadingSpinner from "../../components/Shared/LoadingSpinner";
 import axios from "axios";
 
 const Login = () => {
@@ -12,7 +11,6 @@ const Login = () => {
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
 
-  if (loading) return <LoadingSpinner />;
   if (user) return <Navigate to={from} replace={true} />;
 
   // Save user in the database

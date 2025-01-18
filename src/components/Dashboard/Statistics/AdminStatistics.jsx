@@ -1,4 +1,3 @@
-import { Calendar } from "react-date-range";
 import { BsFillPeopleFill, BsCurrencyDollar } from "react-icons/bs";
 import { FaUsers } from "react-icons/fa";
 import { useEffect, useState } from "react";
