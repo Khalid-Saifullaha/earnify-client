@@ -1,7 +1,6 @@
 // Import necessary modules and libraries
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { AiOutlineMenu } from "react-icons/ai";
 import useAuth from "../../../hooks/useAuth";
 import axios from "axios";
 import Container from "../Container";
