@@ -9,7 +9,6 @@ import ManageUsers from "../pages/Dashboard/Admin/ManageUsers";
 import Profile from "../pages/Dashboard/Common/Profile";
 import Statistics from "../pages/Dashboard/Common/Statistics";
 import MainLayout from "../layouts/MainLayout";
-import ManageOrders from "../pages/Dashboard/Buyer/ManageOrders";
 
 import AddTask from "../pages/Dashboard/Buyer/AddTask";
 import TaskDetails from "../pages/TaskDetails/TaskDetails";
@@ -17,6 +16,7 @@ import MyTasks from "../pages/Dashboard/Buyer/MyTasks";
 import MySubmission from "../pages/Dashboard/Worker/MySubmission";
 import BuyerRoute from "./BuyerRoute";
 import AdminRoute from "./AdminRoute";
+import ManageSubmission from "../pages/Dashboard/Buyer/ManageSubmission";
 
 export const router = createBrowserRouter([
   {
@@ -99,11 +99,11 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "manage-orders",
+        path: "manage-submission",
         element: (
           <PrivateRoute>
             <BuyerRoute>
-              <ManageOrders />
+              <ManageSubmission></ManageSubmission>
             </BuyerRoute>
           </PrivateRoute>
         ),

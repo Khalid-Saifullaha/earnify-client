@@ -8,7 +8,8 @@ const Statistics = () => {
   if (isLoading) return <LoadingSpinner />;
   if (role === "worker")
     return <Navigate to="/dashboard/my-submission"></Navigate>;
-  if (role === "buyer") return <Navigate to="/dashboard/my-task"></Navigate>;
+  if (role === "buyer")
+    return <Navigate to="/dashboard/manage-submission"></Navigate>;
   return (
     <div>
       <Helmet>

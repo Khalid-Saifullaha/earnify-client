@@ -32,6 +32,7 @@ const TaskDetails = () => {
     const buyer_email = form.buyer_email.value;
     const current_date = new Date().toISOString().split("T")[0];
     const status = "pending";
+    const submission_info = form.submission_info.value;
 
     const submitData = {
       task_id,
@@ -44,6 +45,7 @@ const TaskDetails = () => {
       buyer_email,
       current_date,
       status,
+      submission_info,
     };
 
     console.table("Form Data:", submitData);
@@ -291,23 +293,15 @@ const TaskDetails = () => {
                     Submission Details
                   </label>
                   <textarea
-                    id="submission_details"
+                    id="submission_info"
                     placeholder="Enter submission details"
                     className="block rounded-md focus:lime-300 w-full h-32 px-4 py-3 text-gray-800 border border-lime-300 bg-white focus:outline-lime-500"
-                    name="submission_details"
+                    name="submission_info"
                     required
                   ></textarea>
                 </div>
               </div>
               <div className="flex justify-center items-center ">
-                {/* Submit Button */}
-                {/* <Button
-                  label={
-                    required_workers > 0
-                      ? "Task Submit"
-                      : "required_workers full"
-                  }
-                ></Button> */}
                 <button
                   type="submit"
                   className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-lime-500"

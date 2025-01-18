@@ -8,8 +8,8 @@ const BuyerMenu = () => {
       <MenuItem icon={MdHomeWork} label="My Task’s" address="my-task" />
       <MenuItem
         icon={MdOutlineManageHistory}
-        label="Manage Orders"
-        address="manage-orders"
+        label="Manage Submission"
+        address="manage-submission"
       />
     </>
   );

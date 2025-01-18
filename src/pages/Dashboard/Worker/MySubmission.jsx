@@ -87,7 +87,15 @@ const MySubmission = () => {
                         </p>
                       </td>
                       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p className="text-red-600 bg-green-100 px-1 text-center font-bold rounded-full whitespace-no-wrap">
+                        <p
+                          className={`text-center font-bold rounded-full whitespace-no-wrap px-1 ${
+                            submissionData.status === "pending"
+                              ? "text-red-600 bg-red-100"
+                              : submissionData.status === "approved"
+                              ? "text-green-600 bg-green-100"
+                              : ""
+                          }`}
+                        >
                           {submissionData.status}
                         </p>
                       </td>

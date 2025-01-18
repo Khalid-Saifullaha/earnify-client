@@ -67,13 +67,10 @@ const TaskDataRow = ({ refetch, task }) => {
           <p className="text-gray-900 whitespace-no-wrap">{task_title}</p>
         </td>
         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-          <p className="text-gray-900 whitespace-no-wrap">{required_workers}</p>
-        </td>
-        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           <p className="text-gray-900 whitespace-no-wrap">${payable_amount}</p>
         </td>
         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-          <p className="text-gray-900 whitespace-no-wrap">{task_detail}</p>
+          <p className="text-gray-900 whitespace-no-wrap">{required_workers}</p>
         </td>
         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           <button
@@ -104,7 +101,7 @@ const TaskDataRow = ({ refetch, task }) => {
             <div className="flex justify-end space-x-4">
               <button
                 onClick={() => setDeleteConfirmOpen(false)}
-                className="px-4 py-2 bg-gray-300 rounded"
+                className="px-4 py-2 bg-gray-300 text-gray-800 rounded"
               >
                 Cancel
               </button>
@@ -121,13 +118,17 @@ const TaskDataRow = ({ refetch, task }) => {
 
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg p-6 w-1/3">
-            <h2 className="text-lg font-bold mb-4">Update Task</h2>
+          <div className="bg-white rounded-lg p-6 w-1/3 border border-lime-300">
+            <h2 className="text-lg font-bold mb-4 text-gray-600">
+              Update Task
+            </h2>
             <div className="mb-4">
-              <label className="block text-sm font-bold mb-2">Task Title</label>
+              <label className="block text-sm font-bold mb-2 text-gray-600">
+                Task Title
+              </label>
               <input
                 type="text"
-                className="w-full px-3 py-2 border rounded"
+                className="w-full px-4 py-3 text-gray-800 border border-lime-300 rounded-md bg-white focus:outline-lime-500"
                 value={updatedTask.task_title}
                 onChange={(e) =>
                   setUpdatedTask({ ...updatedTask, task_title: e.target.value })
@@ -135,11 +136,11 @@ const TaskDataRow = ({ refetch, task }) => {
               />
             </div>
             <div className="mb-4">
-              <label className="block text-sm font-bold mb-2">
+              <label className="block text-sm font-bold mb-2 text-gray-600">
                 Task Details
               </label>
               <textarea
-                className="w-full px-3 py-2 border rounded"
+                className="w-full px-4 py-3 text-gray-800 border border-lime-300 rounded-md bg-white focus:outline-lime-500"
                 value={updatedTask.task_detail}
                 onChange={(e) =>
                   setUpdatedTask({
@@ -150,11 +151,11 @@ const TaskDataRow = ({ refetch, task }) => {
               ></textarea>
             </div>
             <div className="mb-4">
-              <label className="block text-sm font-bold mb-2">
+              <label className="block text-sm font-bold mb-2 text-gray-600">
                 Submission Details
               </label>
               <textarea
-                className="w-full px-3 py-2 border rounded"
+                className="w-full px-4 py-3 text-gray-800 border border-lime-300 rounded-md bg-white focus:outline-lime-500"
                 value={updatedTask.submission_info}
                 onChange={(e) =>
                   setUpdatedTask({
@@ -167,13 +168,13 @@ const TaskDataRow = ({ refetch, task }) => {
             <div className="flex justify-end space-x-4">
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="px-4 py-2 bg-gray-300 rounded"
+                className="px-4 py-2 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400"
               >
                 Cancel
               </button>
               <button
                 onClick={handleUpdate}
-                className="px-4 py-2 bg-blue-500 text-white rounded"
+                className="px-4 py-2 bg-lime-500 text-white rounded-md hover:bg-lime-600"
               >
                 Update
               </button>
