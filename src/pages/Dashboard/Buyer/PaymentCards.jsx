@@ -14,7 +14,7 @@ const PaymentCards = () => {
       <h2 className="text-3xl text-center">Purchase Coin</h2>
 
       <Elements stripe={stripePromise}>
-        <PaymentForm></PaymentForm>
+        <PaymentForm amount={amount}></PaymentForm>
       </Elements>
     </div>
   );

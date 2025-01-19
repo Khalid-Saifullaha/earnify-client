@@ -1,5 +1,4 @@
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
@@ -15,18 +14,17 @@ const PaymentForm = ({ amount }) => {
   const elements = useElements();
 
   // Ensure amount is parsed into a number and converted to cents
-  const amountInCents = parseInt(amount) * 100;
+  const amountInCents = parseInt(amount);
 
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     if (!stripe || !elements) return;
 
     const card = elements.getElement(CardElement);
 
-    setIsLoading(true); // Start loading
+    setIsLoading(true);
 
     try {
       // Get clientSecret from the backend
@@ -56,15 +54,12 @@ const PaymentForm = ({ amount }) => {
         toast.success("Payment Successful!");
 
         try {
-          const response = await axiosSecure.post(
-            `/payment-success/${user?.email}`,
-            {
-              paymentId: paymentIntent.id,
-              amount: paymentIntent.amount,
-            }
-          );
-          refetch();
+          await axiosSecure.post(`/payments/${user?.email}`, {
+            paymentId: paymentIntent.id,
+            amount: paymentIntent.amount,
+          });
           navigate("/dashboard/payment-history");
+          refetch();
         } catch (err) {
           toast.error(
             "Payment recorded successfully, but failed to update backend."

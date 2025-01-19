@@ -12,6 +12,7 @@ import {
 } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
 import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext(null);
@@ -21,6 +22,19 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  // const [coin, setCoins] = useState(0);
+
+  // const { data, refetch } = useQuery({
+  //   queryKey: ["users", user?.email],
+  //   queryFn: async () => {
+  //     const res = await axios.get(
+  //       `${import.meta.env.VITE_API_URL}/users/${user?.email}`
+  //     );
+  //     setCoins(res.data.coins);
+  //     return res.data.coins;
+  //   },
+  //   enabled: !!user?.email,
+  // });
 
   const createUser = (email, password) => {
     setLoading(true);
