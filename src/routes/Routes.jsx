@@ -18,6 +18,8 @@ import BuyerRoute from "./BuyerRoute";
 import AdminRoute from "./AdminRoute";
 import ManageSubmission from "../pages/Dashboard/Buyer/ManageSubmission";
 import PurchaseCoin from "../pages/Dashboard/Buyer/PurchaseCoin";
+import PaymentCards from "../pages/Dashboard/Buyer/PaymentCards";
+import PaymentHistory from "../pages/Dashboard/Buyer/PaymentHistory";
 
 export const router = createBrowserRouter([
   {
@@ -115,6 +117,26 @@ export const router = createBrowserRouter([
           <PrivateRoute>
             <BuyerRoute>
               <PurchaseCoin />
+            </BuyerRoute>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "payment-card/:amount",
+        element: (
+          <PrivateRoute>
+            <BuyerRoute>
+              <PaymentCards></PaymentCards>
+            </BuyerRoute>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "payment-history",
+        element: (
+          <PrivateRoute>
+            <BuyerRoute>
+              <PaymentHistory></PaymentHistory>
             </BuyerRoute>
           </PrivateRoute>
         ),

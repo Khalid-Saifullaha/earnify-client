@@ -8,12 +8,11 @@ const AddTaskForm = ({
   uploadImage,
   setUploadImage,
   loading,
+  setRequiredWorkers,
+  setPayableAmount,
+  totalPayable,
 }) => {
   const [completionDate, setCompletionDate] = useState(null);
-  const [requiredWorkers, setRequiredWorkers] = useState(0); // To track required workers
-  const [payableAmount, setPayableAmount] = useState(0); // To track payable amount
-
-  const totalPayable = requiredWorkers * payableAmount; // Calculate total payable amount
 
   return (
     <div className="w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
@@ -56,7 +55,7 @@ const AddTaskForm = ({
               </label>
               <input
                 onChange={(e) =>
-                  setRequiredWorkers(parseInt(e.target.value || 0))
+                  setRequiredWorkers(Math.max(0, parseInt(e.target.value) || 0))
                 }
                 className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
                 name="required_workers"
@@ -76,7 +75,7 @@ const AddTaskForm = ({
               </label>
               <input
                 onChange={(e) =>
-                  setPayableAmount(parseFloat(e.target.value || 0))
+                  setPayableAmount(Math.max(0, parseFloat(e.target.value) || 0))
                 }
                 className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
                 name="payable_amount"
@@ -147,24 +146,23 @@ const AddTaskForm = ({
             </div>
 
             {/* Preview Uploaded Image */}
-            {uploadImage && uploadImage?.image?.size && (
+            {uploadImage?.image?.size && (
               <div className="flex gap-5 items-center">
                 <img className="w-20" src={uploadImage?.url} alt="" />
                 <p>Image Size: {uploadImage?.image?.size} Bytes</p>
               </div>
             )}
 
-            {/* Submit Button with Dynamic Text */}
+            {/* Submit Button */}
             <button
               type="submit"
               className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-lime-500"
+              disabled={totalPayable <= 0}
             >
               {loading ? (
                 <TbFidgetSpinner className="animate-spin m-auto" />
-              ) : requiredWorkers > 0 ? (
-                `Save & Continue (Total: ${totalPayable} Coins)`
               ) : (
-                "Save & Continue"
+                `Save & Continue (Total: ${totalPayable} Coins)`
               )}
             </button>
           </div>

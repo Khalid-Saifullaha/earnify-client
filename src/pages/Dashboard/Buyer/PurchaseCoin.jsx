@@ -1,38 +1,35 @@
 import React from "react";
+import { useNavigate } from "react-router-dom"; // to navigate after card click
 
 const PurchaseCoin = () => {
-  const coinOptions = [
+  const navigate = useNavigate();
+
+  // Define the coin packages with prices
+  const coinPackages = [
+    { coins: 10, price: 1 },
     { coins: 150, price: 10 },
     { coins: 500, price: 20 },
     { coins: 1000, price: 35 },
   ];
 
-  const handleDummyPayment = (coins, price) => {
-    alert(
-      `Dummy payment successful! You purchased ${coins} coins for $${price}.`
-    );
+  const handlePaymentRedirect = (amount, coins) => {
+    // Redirect to payment page with the specific amount and coins to be paid
+    navigate(`/dashboard/payment-card/${amount * 100}`);
   };
-
+  //   , { state: { amount, coins } }
   return (
-    <div className="container mx-auto px-4 sm:px-8">
-      <h1 className="text-2xl font-bold text-center my-6">Purchase Coins</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {coinOptions.map((option) => (
-          <div
-            key={option.coins}
-            className="bg-white shadow-lg rounded-lg p-6 text-center"
-          >
-            <h2 className="text-lg font-semibold">{option.coins} Coins</h2>
-            <p className="text-gray-600 my-2">= ${option.price}</p>
-            <button
-              onClick={() => handleDummyPayment(option.coins, option.price)}
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4"
-            >
-              Buy Now
-            </button>
-          </div>
-        ))}
-      </div>
+    <div className="grid grid-cols-1 mt-20 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {coinPackages.map((pkg, index) => (
+        <div
+          key={index}
+          className="p-6 bg-white rounded-lg shadow-lg cursor-pointer hover:bg-gray-100 transition-all duration-300"
+          aria-label={`${pkg.coins} coins for $${pkg.price}`}
+          onClick={() => handlePaymentRedirect(pkg.price, pkg.coins)}
+        >
+          <h3 className="text-2xl font-semibold">{pkg.coins} Coins</h3>
+          <p className="text-xl text-gray-600">{`= $${pkg.price}`}</p>
+        </div>
+      ))}
     </div>
   );
 };

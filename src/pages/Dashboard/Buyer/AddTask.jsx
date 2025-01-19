@@ -8,7 +8,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useNavigate } from "react-router-dom";
 
 const AddTask = () => {
-  const { user } = useAuth();
+  const { user, setUser } = useAuth(); // Destructure `setUser` to update the user state
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const [uploadImage, setUploadImage] = useState({
@@ -19,7 +19,6 @@ const AddTask = () => {
   const [loading, setLoading] = useState(false);
 
   const totalPayable = requiredWorkers * payableAmount;
-
   const userCoins = user?.coins || 100;
 
   // Handle form submit
@@ -35,10 +34,13 @@ const AddTask = () => {
     const image = form.image.files[0];
     const imageUrl = await imageUpload(image);
 
+    // Calculate total payable
+    const totalPayable = required_workers * payable_amount;
+
     // Check if user has enough coins
     if (totalPayable > userCoins) {
       toast.error("Not enough coins. Purchase more coins.");
-      navigate("/purchase-coin");
+      navigate("/dashboard/purchase-coin");
       return;
     }
 
@@ -67,11 +69,29 @@ const AddTask = () => {
 
     try {
       // Save task to the database
-      await axiosSecure.post("/tasks", taskData);
+      const response = await axiosSecure.post("/tasks", taskData);
 
-      // Update user's coin balance (example, replace with backend API logic)
-      const updatedCoins = userCoins - totalPayable;
-      console.log(`Updated Coins: ${updatedCoins}`);
+      // If task added successfully, update coins
+      if (response.data.updatedCoins !== undefined) {
+        console.log(`Updated Coins: ${response.data.updatedCoins}`);
+
+        // Fetch the updated user data to get the new coin balance
+        const updatedUserResponse = await axiosSecure.get(
+          `/users/${user.email}`
+        );
+
+        // Assuming the response contains the updated user data with the new coin balance
+        if (
+          updatedUserResponse.data &&
+          updatedUserResponse.data.coins !== undefined
+        ) {
+          // Update the user state with the new coins balance
+          setUser((prevUser) => ({
+            ...prevUser,
+            coins: updatedUserResponse.data.coins,
+          }));
+        }
+      }
 
       // Show success toast
       toast.success("Task added successfully!");
