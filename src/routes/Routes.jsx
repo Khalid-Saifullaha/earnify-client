@@ -20,6 +20,7 @@ import ManageSubmission from "../pages/Dashboard/Buyer/ManageSubmission";
 import PurchaseCoin from "../pages/Dashboard/Buyer/PurchaseCoin";
 import PaymentCards from "../pages/Dashboard/Buyer/PaymentCards";
 import PaymentHistory from "../pages/Dashboard/Buyer/PaymentHistory";
+import TaskList from "../pages/Dashboard/Worker/TaskList";
 
 export const router = createBrowserRouter([
   {
@@ -98,6 +99,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MySubmission></MySubmission>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "task-list",
+        element: (
+          <PrivateRoute>
+            <TaskList />
           </PrivateRoute>
         ),
       },
