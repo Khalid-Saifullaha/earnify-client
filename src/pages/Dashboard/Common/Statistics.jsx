@@ -6,8 +6,7 @@ import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
 const Statistics = () => {
   const [role, isLoading] = useRole();
   if (isLoading) return <LoadingSpinner />;
-  if (role === "worker")
-    return <Navigate to="/dashboard/my-submission"></Navigate>;
+  if (role === "worker") return <Navigate to="/dashboard/my-home"></Navigate>;
   if (role === "buyer")
     return <Navigate to="/dashboard/manage-submission"></Navigate>;
   return (
