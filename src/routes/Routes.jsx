@@ -21,6 +21,7 @@ import PurchaseCoin from "../pages/Dashboard/Buyer/PurchaseCoin";
 import PaymentCards from "../pages/Dashboard/Buyer/PaymentCards";
 import PaymentHistory from "../pages/Dashboard/Buyer/PaymentHistory";
 import TaskList from "../pages/Dashboard/Worker/TaskList";
+import MyHome from "../pages/Dashboard/Worker/MyHome";
 
 export const router = createBrowserRouter([
   {
@@ -91,6 +92,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Profile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "my-home",
+        element: (
+          <PrivateRoute>
+            <MyHome />
           </PrivateRoute>
         ),
       },
