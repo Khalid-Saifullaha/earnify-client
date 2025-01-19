@@ -6,7 +6,7 @@ import { useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const PaymentForm = ({ amount }) => {
-  const { user, refetch } = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
 
@@ -59,7 +59,6 @@ const PaymentForm = ({ amount }) => {
             amount: paymentIntent.amount,
           });
           navigate("/dashboard/payment-history");
-          refetch();
         } catch (err) {
           toast.error(
             "Payment recorded successfully, but failed to update backend."
