@@ -4,7 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
 import ManageSubmissionDataRow from "../../../components/Dashboard/TableRows/ManageSubmissionDataRow";
-import { BsFillPeopleFill, BsCurrencyDollar } from "react-icons/bs";
+import { BsCurrencyDollar } from "react-icons/bs";
 import { FaTasks } from "react-icons/fa";
 import { useEffect, useState } from "react";
 

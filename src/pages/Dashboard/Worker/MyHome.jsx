@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import useAuth from "../../../hooks/useAuth";
 import { FaTasks, FaRegClock, FaMoneyBillWave } from "react-icons/fa";
+import { CiCoins1 } from "react-icons/ci";
 
 const MyHome = () => {
   const { user } = useAuth();
@@ -91,7 +92,7 @@ const MyHome = () => {
           </p>
         </div>
         <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
-          <FaMoneyBillWave className="text-4xl text-green-600 mb-4 mx-auto" />
+          <CiCoins1 className="text-4xl text-orange-300 mb-4 mx-auto" />
           <h3 className="text-xl font-semibold text-gray-700 mb-2">
             Total Earnings
           </h3>

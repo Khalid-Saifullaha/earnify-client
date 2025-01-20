@@ -100,6 +100,9 @@ const AuthProvider = ({ children }) => {
     signInWithGoogle,
     logOut,
     updateUserProfile,
+    // coin,
+    // setCoins,
+    // refetch,
   };
 
   return (

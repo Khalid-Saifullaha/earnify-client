@@ -13,6 +13,7 @@ const WorkerMenu = () => {
         address="my-submission"
       />
       <MenuItem icon={CiBoxList} label="Task List" address="task-list" />
+      <MenuItem icon={CiBoxList} label="Withdrawa" address="WithdrawalInfo" />
     </>
   );
 };

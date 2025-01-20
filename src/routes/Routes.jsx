@@ -22,6 +22,7 @@ import PaymentCards from "../pages/Dashboard/Buyer/PaymentCards";
 import PaymentHistory from "../pages/Dashboard/Buyer/PaymentHistory";
 import TaskList from "../pages/Dashboard/Worker/TaskList";
 import MyHome from "../pages/Dashboard/Worker/MyHome";
+import WithdrawalInfo from "../pages/Dashboard/Worker/WithdrawalInfo";
 
 export const router = createBrowserRouter([
   {
@@ -116,6 +117,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <TaskList />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "withdrawalInfo",
+        element: (
+          <PrivateRoute>
+            <WithdrawalInfo />
           </PrivateRoute>
         ),
       },
