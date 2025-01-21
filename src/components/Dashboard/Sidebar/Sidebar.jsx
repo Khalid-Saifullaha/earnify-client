@@ -45,9 +45,11 @@ const Sidebar = () => {
         } md:translate-x-0 transition duration-200 ease-in-out`}
       >
         <div>
-          <div className="w-full flex px-4 py-2 shadow-lg rounded-lg justify-between items-center bg-lime-100 mx-auto">
+          <div className="w-full flex px-4 py-2 shadow-lg rounded-lg justify-between items-center bg-white mx-auto">
             <Link to="/">
-              <img src={logo} alt="logo" width="100" height="100" />
+              <h1 className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-500 to-purple-600">
+                Earnify
+              </h1>
             </Link>
 
             {/* Cross Icon to Close Sidebar */}

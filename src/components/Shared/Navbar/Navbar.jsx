@@ -33,28 +33,6 @@ const Navbar = () => {
     fetchCoins();
   }, [user]);
 
-  // // Fetch notifications when user is logged in
-  // useEffect(() => {
-  //   const fetchNotifications = async () => {
-  //     if (user?.email) {
-  //       try {
-  //         const response = await axios.get(
-  //           `${import.meta.env.VITE_API_URL}/notifications/${user.email}`
-  //         );
-  //         setNotifications(response.data?.notifications || []);
-  //         const unread = response.data?.notifications.filter(
-  //           (notification) => !notification.isRead
-  //         ).length;
-  //         setUnreadCount(unread);
-  //       } catch (error) {
-  //         console.error("Error fetching notifications:", error);
-  //       }
-  //     }
-  //   };
-
-  //   fetchNotifications();
-  // }, [user]);
-
   // Mark all notifications as read
   const handleMarkAsRead = async () => {
     try {
