@@ -22,19 +22,20 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  // const [coin, setCoins] = useState(0);
+  const [coin, setCoins] = useState(0);
 
-  // const { data, refetch } = useQuery({
-  //   queryKey: ["users", user?.email],
-  //   queryFn: async () => {
-  //     const res = await axios.get(
-  //       `${import.meta.env.VITE_API_URL}/users/${user?.email}`
-  //     );
-  //     setCoins(res.data.coins);
-  //     return res.data.coins;
-  //   },
-  //   enabled: !!user?.email,
-  // });
+  const { data, refetch } = useQuery({
+    queryKey: ["users", user?.email],
+    queryFn: async () => {
+      const res = await axios.get(
+        `${import.meta.env.VITE_API_URL}/users/${user?.email}`
+      );
+      setCoins(res.data.coins);
+      return res.data.coins;
+    },
+    enabled: !!user?.email,
+  });
+  console.log(coin);
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -100,9 +101,9 @@ const AuthProvider = ({ children }) => {
     signInWithGoogle,
     logOut,
     updateUserProfile,
-    // coin,
-    // setCoins,
-    // refetch,
+    coin,
+    setCoins,
+    refetch,
   };
 
   return (
