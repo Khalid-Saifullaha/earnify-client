@@ -20,14 +20,24 @@ const ManageSubmissionDataRow = ({ submission, refetch }) => {
   // Handle Approve
   const handleApprove = async () => {
     try {
-      await axiosSecure.patch(`/worker/status/approve/${_id}`, {
-        status: "approved",
-        payable_amount: payable_amount,
-      });
+      const response = await axiosSecure.patch(
+        `/worker/status/approve/${_id}`,
+        {
+          status: "approved",
+          payable_amount: payable_amount,
+        }
+      );
+      // Show notification to user
       toast.success("Submission approved successfully!");
+      // Trigger re-fetch to update UI
       refetch();
       setIsApproved(true);
       setIsRejected(false);
+      // Add the notification UI logic (trigger a pop-up or visual indicator)
+      showNotification(
+        "Submission approved",
+        `You have earned ${payable_amount} from ${worker_name} for completing ${task_title}.`
+      );
     } catch (error) {
       toast.error("Failed to approve submission.");
       console.error(error);
@@ -37,18 +47,37 @@ const ManageSubmissionDataRow = ({ submission, refetch }) => {
   // Handle Reject
   const handleReject = async () => {
     try {
-      await axiosSecure.patch(`/worker/status/reject/${_id}`, {
+      const response = await axiosSecure.patch(`/worker/status/reject/${_id}`, {
         status: "rejected",
         task_id: task_id,
       });
+      // Show notification to user
       toast.success("Submission rejected successfully!");
+      // Trigger re-fetch to update UI
       refetch();
       setIsRejected(true);
       setIsApproved(false);
+      // Add the notification UI logic (trigger a pop-up or visual indicator)
+      showNotification(
+        "Submission rejected",
+        `Your submission for task "${task_title}" was rejected.`
+      );
     } catch (error) {
       toast.error("Failed to reject submission.");
       console.error(error);
     }
+  };
+
+  // Show notification function (you can implement your own UI pop-up here)
+  const showNotification = (title, message) => {
+    const notification = {
+      title: title,
+      message: message,
+      time: new Date(),
+    };
+    // You can use any state or library to show the notification
+    console.log("Notification:", notification);
+    // Here you could call a custom hook or use a state to display the notification
   };
 
   return (

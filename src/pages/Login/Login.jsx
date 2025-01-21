@@ -9,89 +9,95 @@ const Login = () => {
   const { signIn, signInWithGoogle, loading, user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location?.state?.from?.pathname || "/";
+  const from = location?.state?.from?.pathname || "/dashboard";
 
   if (user) return <Navigate to={from} replace={true} />;
 
-  // Save user in the database
-  const saveUserToDb = async (email, userData) => {
-    try {
-      const response = await axios.post(`/users/${email}`, userData);
-      return response.data;
-    } catch (error) {
-      console.error("Error saving user to DB:", error);
-      toast.error("Error saving user data");
-    }
+  // Email Validation Function
+  const validateEmail = (email) => {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(email);
   };
 
-  // Fetch user from the database
-  const fetchUserFromDb = async (email) => {
-    try {
-      const response = await axios.get(`/users/${email}`);
-      return response.data;
-    } catch (error) {
-      console.error("Error fetching user from DB:", error);
-      toast.error("Error fetching user data");
-    }
+  // Password Validation Function (min 6 characters)
+  const validatePassword = (password) => {
+    return password.length >= 6;
   };
 
-  // Form submit handler
+  // Form Submit Handler
   const handleSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
 
+    // Input validation
+    if (!validateEmail(email)) {
+      return toast.error("Please enter a valid email.");
+    }
+    if (!validatePassword(password)) {
+      return toast.error("Password must be at least 6 characters.");
+    }
+
     try {
-      // User Login through API
-      const response = await signIn(email, password);
+      // User Login via email/password
+      await signIn(email, password);
 
-      // Fetch user data from DB (to get role, coins, etc.)
-      const userFromDb = await fetchUserFromDb(email);
+      // After login, fetch user info from DB to check or save role and coins
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/users/${email}`
+      );
+      const userData = response.data;
 
-      // If user doesn't exist in the database, assign default role 'worker'
-      if (!userFromDb) {
-        const userData = { role: "worker" }; // default role for new users
-        await saveUserToDb(email, userData); // Save new user
+      // If user is new, assign default values (worker and 10 coins)
+      if (!userData.role) {
+        const newUserData = {
+          role: "worker",
+          coins: 10,
+        };
+
+        // Save the user in the DB if not found
+        await axios.post(
+          `${import.meta.env.VITE_API_URL}/users/${email}`,
+          newUserData
+        );
+
+        // Update user data after saving
+        userData.role = "worker";
+        userData.coins = 10;
       }
 
-      // Save the role and other user info in the local storage
-      localStorage.setItem("userRole", userFromDb.role || "worker");
-      localStorage.setItem("coins", userFromDb.coins || 10); // Default coins for worker
-
-      navigate(from, { replace: true });
+      // Navigate the user to the dashboard after successful login
+      navigate("/dashboard", { replace: true });
       toast.success("Login Successful");
-      navigate("/dashboard");
     } catch (err) {
       console.log(err);
-      toast.error(err?.message);
+      toast.error(err?.message || "Invalid email or password.");
     }
   };
 
-  // Handle Google Signin
+  // Handle Google SignIn
   const handleGoogleSignIn = async () => {
     try {
-      const response = await signInWithGoogle();
+      const data = await signInWithGoogle();
+      const userData = {
+        name: data?.user?.displayName,
+        email: data?.user?.email,
+        role: "worker",
+        coins: 10,
+      };
 
-      const userEmail = response.user.email;
-      // Fetch user data from DB (to get role, coins, etc.)
-      const userFromDb = await fetchUserFromDb(userEmail);
+      // Save user data to DB using axios
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/users/${data?.user?.email}`,
+        userData
+      );
 
-      // If user doesn't exist in the database, assign default role 'worker'
-      if (!userFromDb) {
-        const userData = { role: "worker" }; // default role for new users
-        await saveUserToDb(userEmail, userData); // Save new user
-      }
-
-      // Save the role and other user info in the local storage
-      localStorage.setItem("userRole", userFromDb.role || "worker");
-      localStorage.setItem("coins", userFromDb.coins || 10); // Default coins for worker
-
-      navigate(from, { replace: true });
+      navigate("/dashboard", { replace: true });
       toast.success("Login Successful");
     } catch (err) {
       console.log(err);
-      toast.error(err?.message);
+      toast.error(err?.message || "Something went wrong!");
     }
   };
 
@@ -107,7 +113,6 @@ const Login = () => {
         <form
           onSubmit={handleSubmit}
           noValidate=""
-          action=""
           className="space-y-6 ng-untouched ng-pristine ng-valid"
         >
           <div className="space-y-4">
@@ -122,15 +127,12 @@ const Login = () => {
                 required
                 placeholder="Enter Your Email Here"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
-                data-temp-mail-org="0"
               />
             </div>
             <div>
-              <div className="flex justify-between">
-                <label htmlFor="password" className="text-sm mb-2">
-                  Password
-                </label>
-              </div>
+              <label htmlFor="password" className="text-sm mb-2">
+                Password
+              </label>
               <input
                 type="password"
                 name="password"

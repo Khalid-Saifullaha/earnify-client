@@ -12,7 +12,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [availableCoins, setAvailableCoins] = useState(0);
-  const [notifications, setNotifications] = useState();
+  const [notifications, setNotifications] = useState([]);
+  const [unreadCount, setUnreadCount] = useState(0);
 
   // Fetch coins when user is logged in
   useEffect(() => {
@@ -31,6 +32,46 @@ const Navbar = () => {
 
     fetchCoins();
   }, [user]);
+
+  // Fetch notifications when user is logged in
+  useEffect(() => {
+    const fetchNotifications = async () => {
+      if (user?.email) {
+        try {
+          const response = await axios.get(
+            `${import.meta.env.VITE_API_URL}/notifications/${user.email}`
+          );
+          setNotifications(response.data?.notifications || []);
+          const unread = response.data?.notifications.filter(
+            (notification) => !notification.isRead
+          ).length;
+          setUnreadCount(unread);
+        } catch (error) {
+          console.error("Error fetching notifications:", error);
+        }
+      }
+    };
+
+    fetchNotifications();
+  }, [user]);
+
+  // Mark all notifications as read
+  const handleMarkAsRead = async () => {
+    try {
+      await axios.patch(
+        `${import.meta.env.VITE_API_URL}/notifications/mark-read/${user.email}`
+      );
+      setUnreadCount(0); // Reset unread count after marking as read
+      setNotifications((prevNotifications) =>
+        prevNotifications.map((notification) => ({
+          ...notification,
+          isRead: true,
+        }))
+      );
+    } catch (error) {
+      console.error("Error marking notifications as read:", error);
+    }
+  };
 
   // Toggle the menu visibility
   const toggleMenu = () => {
@@ -95,17 +136,36 @@ const Navbar = () => {
                   {/* Available Coins */}
                   <div className="font-medium text-gray-600 flex items-center gap-1">
                     Available Coins: <FaCoins className="text-orange-300" />
-                    {availableCoins}
+                    <span className="text-black">{availableCoins}</span>
                   </div>
 
                   {/* Notification Icon */}
                   <div className="relative">
-                    <FiBell className="w-6 h-6 text-gray-600 cursor-pointer" />
-                    {notifications > 0 && (
+                    <FiBell
+                      className="w-6 h-6 text-gray-600 cursor-pointer"
+                      onClick={handleMarkAsRead}
+                    />
+                    {unreadCount > 0 && (
                       <div className="absolute top-0 right-0 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
-                        {notifications}
+                        {unreadCount}
                       </div>
                     )}
+                    <div className="absolute top-8 right-0 bg-white shadow-lg rounded-lg w-72">
+                      <div className="max-h-64 overflow-auto">
+                        {notifications.map((notification) => (
+                          <div
+                            key={notification._id}
+                            className={`px-4 py-2 ${
+                              notification.isRead
+                                ? "bg-gray-100"
+                                : "bg-yellow-100"
+                            }`}
+                          >
+                            <p>{notification.message}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
 
                   {/* User Profile and Logout */}
@@ -202,16 +262,17 @@ const Navbar = () => {
                     Dashboard
                   </Link>
                   <div className="text-lg font-medium text-gray-600">
-                    Available Coins: {availableCoins}
+                    Available Coins:{" "}
+                    <span className="text-black">{availableCoins}</span>
                   </div>
                   <div className="relative">
                     <FiBell
                       className="w-6 h-6 text-gray-600 cursor-pointer"
                       onClick={closeMenu}
                     />
-                    {notifications > 0 && (
+                    {unreadCount > 0 && (
                       <div className="absolute top-0 right-0 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
-                        {notifications}
+                        {unreadCount}
                       </div>
                     )}
                   </div>

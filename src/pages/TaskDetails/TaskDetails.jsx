@@ -248,7 +248,7 @@ const TaskDetails = () => {
                     name="current_date"
                     id="current_date"
                     type="date"
-                    defaultValue={new Date().toISOString().split("T")[0]} // Set current date as default
+                    defaultValue={new Date().toISOString().split("T")[0]}
                     required
                   />
                 </div>

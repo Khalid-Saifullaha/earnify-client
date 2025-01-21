@@ -3,7 +3,6 @@ import Banner from "./Banner/Banner";
 import TopWorker from "./TopWorkers/TopWorker";
 import Container from "../../components/Shared/Container";
 import Testimonials from "./Testimonial/Testimonials";
-import Tasks from "../../components/Home/Tasks";
 import Faq from "../../components/Home/Faq";
 import Contact from "../../components/Home/Contact";
 
@@ -17,7 +16,7 @@ const Home = () => {
 
       <Container>
         <TopWorker></TopWorker>
-        <Tasks></Tasks>
+
         <div>
           {/* <!-- How It Works Section --> */}
           <section class="mt-10 py-12">
