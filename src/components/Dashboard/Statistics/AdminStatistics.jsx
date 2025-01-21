@@ -132,53 +132,59 @@ const AdminStatistics = () => {
         {/* Withdraw Requests Table */}
         <div className="mb-4 grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3">
           <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
-            <h2 className="text-xl font-semibold mb-4">Withdraw Requests</h2>
+            <h2 className="text-xl font-semibold mb-4 px-4 pt-4">
+              Withdraw Requests
+            </h2>
             {withdrawals.length > 0 ? (
-              <table className="min-w-full table-auto">
-                <thead>
-                  <tr>
-                    <th className="px-4 py-2 border">Worker Email</th>
-                    <th className="px-4 py-2 border">Withdrawal Coin</th>
-                    <th className="px-4 py-2 border">Withdrawal Amount</th>
-                    <th className="px-4 py-2 border">Status</th>
-                    <th className="px-4 py-2 border">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {withdrawals.map((withdrawal) => (
-                    <tr key={withdrawal._id}>
-                      <td className="px-4 py-2 border">
-                        {withdrawal.worker_email}
-                      </td>
-                      <td className="px-4 py-2 border">
-                        {withdrawal.withdrawal_coin}
-                      </td>
-                      <td className="px-4 py-2 border">
-                        {withdrawal.withdrawal_amount}
-                      </td>
-                      <td className="px-4 py-2 border">{withdrawal.status}</td>
-                      <td className="px-4 py-2 border">
-                        {withdrawal.status === "pending" && (
-                          <button
-                            onClick={() =>
-                              handleApproveWithdrawal(
-                                withdrawal._id,
-                                withdrawal.worker_email,
-                                withdrawal.withdrawal_amount
-                              )
-                            }
-                            className="bg-green-600 text-white px-4 py-2 rounded"
-                          >
-                            Payment Success
-                          </button>
-                        )}
-                      </td>
+              <div className="overflow-x-auto px-4">
+                <table className="min-w-full table-auto">
+                  <thead>
+                    <tr>
+                      <th className="px-4 py-2 border">Worker Email</th>
+                      <th className="px-4 py-2 border">Withdrawal Coin</th>
+                      <th className="px-4 py-2 border">Withdrawal Amount</th>
+                      <th className="px-4 py-2 border">Status</th>
+                      <th className="px-4 py-2 border">Action</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {withdrawals.map((withdrawal) => (
+                      <tr key={withdrawal._id}>
+                        <td className="px-4 py-2 border">
+                          {withdrawal.worker_email}
+                        </td>
+                        <td className="px-4 py-2 border">
+                          {withdrawal.withdrawal_coin}
+                        </td>
+                        <td className="px-4 py-2 border">
+                          {withdrawal.withdrawal_amount}
+                        </td>
+                        <td className="px-4 py-2 border">
+                          {withdrawal.status}
+                        </td>
+                        <td className="px-4 py-2 border">
+                          {withdrawal.status === "pending" && (
+                            <button
+                              onClick={() =>
+                                handleApproveWithdrawal(
+                                  withdrawal._id,
+                                  withdrawal.worker_email,
+                                  withdrawal.withdrawal_amount
+                                )
+                              }
+                              className="bg-green-600 text-white px-4 py-2 rounded"
+                            >
+                              Payment Success
+                            </button>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             ) : (
-              <p>No pending withdrawal requests.</p>
+              <p className="px-4 pb-4">No pending withdrawal requests.</p>
             )}
           </div>
         </div>
