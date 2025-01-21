@@ -15,7 +15,6 @@ const Navbar = () => {
   const [notifications, setNotifications] = useState([]);
   const [unreadCount, setUnreadCount] = useState(0);
 
-  // Fetch coins when user is logged in
   useEffect(() => {
     const fetchCoins = async () => {
       if (user?.email) {
@@ -33,13 +32,12 @@ const Navbar = () => {
     fetchCoins();
   }, [user]);
 
-  // Mark all notifications as read
   const handleMarkAsRead = async () => {
     try {
       await axios.patch(
         `${import.meta.env.VITE_API_URL}/notifications/mark-read/${user.email}`
       );
-      setUnreadCount(0); // Reset unread count after marking as read
+      setUnreadCount(0);
       setNotifications((prevNotifications) =>
         prevNotifications.map((notification) => ({
           ...notification,
@@ -51,31 +49,29 @@ const Navbar = () => {
     }
   };
 
-  // Toggle the menu visibility
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  // Close the mobile menu when an item is clicked
   const closeMenu = () => {
     setIsOpen(false);
   };
 
   return (
-    <div className="fixed w-full bg-white z-10 shadow-sm">
-      <div className="py-4 border-b-[1px]">
+    <div className="fixed w-full bg-gradient-to-r from-indigo-600 to-purple-600 z-10 shadow-lg">
+      <div className="py-4 border-b-2 border-gray-300">
         <Container>
-          <div className="flex flex-row items-center justify-between gap-3 md:gap-0">
+          <div className="flex items-center justify-between gap-3 md:gap-0">
             {/* Logo */}
             <Link to="/">
-              <h1 className="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-500 to-purple-600">
+              <h1 className="text-3xl font-semibold text-white bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600">
                 Earnify
               </h1>
             </Link>
 
             {/* Hamburger Menu Icon for Mobile */}
             <div className="md:hidden flex items-center" onClick={toggleMenu}>
-              <button className="text-gray-600">
+              <button className="text-white">
                 <svg
                   className="w-6 h-6"
                   fill="none"
@@ -94,10 +90,10 @@ const Navbar = () => {
             </div>
 
             {/* Menu for Larger Screens */}
-            <div className="hidden md:flex items-center gap-6">
+            <div className="hidden md:flex items-center gap-8">
               <Link
                 to="/"
-                className="font-medium text-gray-600 hover:text-gray-900 transition"
+                className="font-medium text-white hover:text-gray-100 transition"
               >
                 Home
               </Link>
@@ -106,21 +102,21 @@ const Navbar = () => {
                   {/* Dashboard Link */}
                   <Link
                     to="/dashboard"
-                    className="font-medium text-gray-600 hover:text-gray-900 transition"
+                    className="font-medium text-white hover:text-gray-100 transition"
                   >
                     Dashboard
                   </Link>
 
                   {/* Available Coins */}
-                  <div className="font-medium text-gray-600 flex items-center gap-1">
-                    Available Coins: <FaCoins className="text-orange-300" />
-                    <span className="text-black">{availableCoins}</span>
+                  <div className="font-medium text-white flex items-center gap-1">
+                    Available Coins: <FaCoins className="text-yellow-300" />
+                    <span>{availableCoins}</span>
                   </div>
 
                   {/* Notification Icon */}
                   <div className="relative">
                     <FiBell
-                      className="w-6 h-6 text-gray-600 cursor-pointer"
+                      className="w-6 h-6 text-white cursor-pointer"
                       onClick={handleMarkAsRead}
                     />
                     {unreadCount > 0 && (
@@ -146,12 +142,12 @@ const Navbar = () => {
                     </div>
                   </div>
 
-                  {/* User Profile and Logout */}
+                  {/* User Profile */}
                   <div className="relative">
                     <img
                       src={user.photoURL || avatarImg}
                       alt="User Avatar"
-                      className="h-8 w-8 rounded-full border border-gray-300 cursor-pointer"
+                      className="h-10 w-10 rounded-full border-2 border-white cursor-pointer hover:border-gray-400 transition"
                       onClick={() => setProfileOpen(!profileOpen)}
                     />
                     {profileOpen && (
@@ -176,23 +172,22 @@ const Navbar = () => {
                     href="https://github.com/Khalid-Saifullaha"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium text-blue-500 hover:underline"
+                    className="font-medium text-blue-400 hover:underline"
                   >
                     Join as Developer
                   </a>
                 </div>
               ) : (
                 <>
-                  {/* Links for Non-Logged-in Users */}
                   <Link
                     to="/login"
-                    className="text-sm font-medium text-gray-600 hover:text-gray-900 transition"
+                    className="text-sm font-medium text-white hover:text-gray-100 transition"
                   >
                     Login
                   </Link>
                   <Link
                     to="/signup"
-                    className="text-sm font-medium text-gray-600 hover:text-gray-900 transition"
+                    className="text-sm font-medium text-white hover:text-gray-100 transition"
                   >
                     Sign Up
                   </Link>
@@ -200,7 +195,7 @@ const Navbar = () => {
                     href="https://github.com/Khalid-Saifullaha"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-medium text-blue-500 hover:underline"
+                    className="text-sm font-medium text-blue-400 hover:underline"
                   >
                     Join as Developer
                   </a>
@@ -215,14 +210,13 @@ const Navbar = () => {
       {isOpen && (
         <div className="fixed inset-0 z-20 bg-gray-800 bg-opacity-50 md:hidden">
           <div className="absolute right-0 top-0 w-3/4 bg-white h-full shadow-lg">
-            {/* Close Icon */}
             <div className="flex justify-end p-4">
               <button onClick={closeMenu} className="text-gray-600">
                 <FiX className="w-6 h-6" />
               </button>
             </div>
 
-            <div className="flex flex-col items-center mt-8 space-y-6 text-right">
+            <div className="flex flex-col items-center mt-8 space-y-6 text-center">
               <Link
                 to="/"
                 className="text-lg font-medium text-gray-600 hover:text-gray-900 transition"

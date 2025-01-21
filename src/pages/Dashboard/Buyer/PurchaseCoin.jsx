@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // to navigate after card click
+import { useNavigate } from "react-router-dom";
 
 const PurchaseCoin = () => {
   const navigate = useNavigate();
@@ -13,21 +13,25 @@ const PurchaseCoin = () => {
   ];
 
   const handlePaymentRedirect = (amount, coins) => {
-    // Redirect to payment page with the specific amount and coins to be paid
     navigate(`/dashboard/payment-card/${amount * 100}`);
   };
-  //   , { state: { amount, coins } }
+
   return (
     <div className="grid grid-cols-1 mt-20 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {coinPackages.map((pkg, index) => (
         <div
           key={index}
-          className="p-6 bg-white rounded-lg shadow-lg cursor-pointer hover:bg-gray-100 transition-all duration-300"
+          className="p-6 bg-gradient-to-br from-lime-400 to-blue-500 text-white rounded-xl shadow-lg cursor-pointer hover:scale-105 transform transition-transform duration-300 hover:shadow-2xl"
           aria-label={`${pkg.coins} coins for $${pkg.price}`}
           onClick={() => handlePaymentRedirect(pkg.price, pkg.coins)}
         >
-          <h3 className="text-2xl font-semibold">{pkg.coins} Coins</h3>
-          <p className="text-xl text-gray-600">{`= $${pkg.price}`}</p>
+          <h3 className="text-3xl font-extrabold mb-2">{pkg.coins} Coins</h3>
+          <p className="text-xl font-medium">{`= $${pkg.price}`}</p>
+          <div className="mt-4">
+            <button className="w-full py-2 px-4 bg-white text-blue-600 font-semibold rounded-md hover:bg-gray-100 transition-colors">
+              Buy Now
+            </button>
+          </div>
         </div>
       ))}
     </div>
