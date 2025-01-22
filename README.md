@@ -1,8 +1,59 @@
-# React + Vite
+# Micro Tasking and Earning Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Live Site URL
 
-Currently, two official plugins are available:
+[Visit the Live Site](https://stalwart-starship-e36ae1.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Admin Credentials
+
+- **Email:** khalidsaifullaha@gmail.com
+- **Password:** 123456!As
+
+---
+
+## Features
+
+1. **Three Distinct Roles:** The platform supports three user roles:
+
+   - **Worker:** Complete tasks to earn money.
+   - **Buyer:** Post tasks to be completed by workers.
+   - **Admin:** Manage platform operations, user roles, and tasks.
+
+2. **Task Posting:** Buyers can create and post tasks with detailed instructions, deadlines, and reward amounts.
+
+3. **Task Assignment:** Tasks are automatically or manually assigned to workers, ensuring efficiency and fairness.
+
+4. **Earning and Payouts:** Workers can track earnings and request payouts upon completing tasks.
+
+5. **Admin Dashboard:** A centralized dashboard for admins to monitor platform activities, approve tasks, and manage users.
+
+6. **Real-Time Updates:** Users receive real-time updates on task status, notifications, and messages.
+
+7. **User-Friendly Interface:** Intuitive design ensures smooth navigation for all users.
+
+8. **Secure Authentication:** Role-based login ensures data privacy and secure access for all users.
+
+9. **Responsive Design:** The platform is fully responsive and optimized for desktop, tablet, and mobile devices.
+
+10. **Integrated Feedback System:** Users can provide feedback on tasks, workers, or buyers, improving overall quality.
+
+11. **Search and Filters:** Powerful search and filtering options to find tasks or users quickly.
+
+12. **Activity Logs:** Detailed logs for admin to monitor all user activities and maintain transparency.
+
+---
+
+### Technologies Used
+
+- **Frontend:** React.js, Tailwind CSS
+- **Backend:** Express.js, MongoDB, CORS
+- **Deployment:** Netlify
+
+---
+
+### How to Use
+
+1. Visit the live site at the URL above.
+2. Log in with the credentials provided (or create a user account for Worker/Buyer roles).
+3. Explore the functionalities based on your role.
+4. For any issues or feedback, contact the admin team via the platform.
