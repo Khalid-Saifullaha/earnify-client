@@ -73,11 +73,11 @@ const Faq = () => {
         </div>
 
         {/* Search Bar */}
-        <div className="mb-8">
+        <div className="mb-8 ">
           <input
             type="text"
             placeholder="Search FAQs..."
-            className="w-full px-4 py-3 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-3 border rounded-lg shadow-sm  bg-gradient-to-r from-indigo-600 to-purple-600 text-white"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />

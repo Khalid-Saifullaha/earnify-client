@@ -49,7 +49,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="mt-2 w-full px-4 py-3 border rounded-lg bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 focus:ring-lime-500"
+                    className="mt-2 w-full px-4 py-3 border rounded-lg bg-gray-100  focus:outline-none focus:ring-2 focus:focus:bg-gradient-to-r from-indigo-600 to-purple-600 text-white"
                     placeholder="Enter your name"
                   />
                 </div>
@@ -65,7 +65,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="mt-2 w-full px-4 py-3 border rounded-lg bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 focus:ring-lime-500"
+                    className="mt-2 w-full px-4 py-3 border rounded-lg bg-gray-100  focus:outline-none focus:ring-2 focus:bg-gradient-to-r from-indigo-600 to-purple-600 text-white"
                     placeholder="Enter your email"
                   />
                 </div>
@@ -80,7 +80,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    className="mt-2 w-full px-4 py-3 border rounded-lg bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 focus:ring-lime-500"
+                    className="mt-2 w-full px-4 py-3 border rounded-lg bg-gray-100  focus:outline-none focus:ring-2 focus:bg-gradient-to-r from-indigo-600 to-purple-600 text-white"
                     placeholder="Write your message"
                     rows="6"
                   />
@@ -90,7 +90,7 @@ const Contact = () => {
                 <div>
                   <button
                     type="submit"
-                    className="w-full bg-lime-500 hover:bg-lime-600 text-white py-3 px-6 rounded-lg text-lg font-medium"
+                    className="w-full bg-gradient-to-r from-indigo-600 to-purple-600  text-white py-3 px-6 rounded-lg text-lg font-medium"
                   >
                     Submit
                   </button>
@@ -100,7 +100,7 @@ const Contact = () => {
           </div>
 
           {/* Engaging Company Info Section */}
-          <div className="flex-1 bg-gradient-to-r from-lime-400 to-lime-600 text-white p-8 rounded-lg shadow-lg">
+          <div className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-8 rounded-lg shadow-lg">
             <h3 className="text-2xl font-semibold mb-4">About Our Company</h3>
             <p className="text-lg mb-6">
               We are dedicated to connecting workers and buyers through an
