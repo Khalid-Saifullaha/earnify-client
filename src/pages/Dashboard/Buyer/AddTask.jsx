@@ -63,7 +63,7 @@ const AddTask = () => {
       buyer,
     };
 
-    console.table(taskData);
+    // console.table(taskData);
 
     setLoading(true);
 
@@ -73,7 +73,7 @@ const AddTask = () => {
 
       // If task added successfully, update coins
       if (response.data.updatedCoins !== undefined) {
-        console.log(`Updated Coins: ${response.data.updatedCoins}`);
+        // console.log(`Updated Coins: ${response.data.updatedCoins}`);
 
         // Fetch the updated user data to get the new coin balance
         const updatedUserResponse = await axiosSecure.get(
@@ -97,7 +97,7 @@ const AddTask = () => {
       toast.success("Task added successfully!");
       navigate("/dashboard/my-task");
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       toast.error("Failed to add the task. Please try again.");
     } finally {
       setLoading(false);

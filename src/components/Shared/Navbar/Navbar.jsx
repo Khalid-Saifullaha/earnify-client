@@ -24,7 +24,7 @@ const Navbar = () => {
           );
           setAvailableCoins(response.data?.coins || 0);
         } catch (error) {
-          console.error("Error fetching coins:", error);
+          // console.error("Error fetching coins:", error);
         }
       }
     };
@@ -45,7 +45,7 @@ const Navbar = () => {
         }))
       );
     } catch (error) {
-      console.error("Error marking notifications as read:", error);
+      // console.error("Error marking notifications as read:", error);
     }
   };
 

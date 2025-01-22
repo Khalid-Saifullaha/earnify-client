@@ -8,7 +8,7 @@ import PaymentForm from "./PaymentForm";
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 const PaymentCards = () => {
   const { amount } = useParams();
-  console.log(amount);
+  // console.log(amount);
   return (
     <div>
       <h2 className="text-3xl text-center">Purchase Coin</h2>

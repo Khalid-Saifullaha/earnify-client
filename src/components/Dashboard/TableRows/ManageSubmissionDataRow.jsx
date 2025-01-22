@@ -40,7 +40,7 @@ const ManageSubmissionDataRow = ({ submission, refetch }) => {
       );
     } catch (error) {
       toast.error("Failed to approve submission.");
-      console.error(error);
+      // console.error(error);
     }
   };
 
@@ -64,7 +64,7 @@ const ManageSubmissionDataRow = ({ submission, refetch }) => {
       );
     } catch (error) {
       toast.error("Failed to reject submission.");
-      console.error(error);
+      // console.error(error);
     }
   };
 
@@ -76,7 +76,7 @@ const ManageSubmissionDataRow = ({ submission, refetch }) => {
       time: new Date(),
     };
     // You can use any state or library to show the notification
-    console.log("Notification:", notification);
+    // console.log("Notification:", notification);
     // Here you could call a custom hook or use a state to display the notification
   };
 

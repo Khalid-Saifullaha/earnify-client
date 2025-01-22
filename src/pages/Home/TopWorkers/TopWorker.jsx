@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import LoadingSpinner from "../../../components/Shared/LoadingSpinner";
 
 const TopWorker = () => {
   const [workers, setWorkers] = useState([]);
@@ -24,7 +25,7 @@ const TopWorker = () => {
   }, []);
 
   if (loading) {
-    return <div className="text-center text-gray-600">Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   if (error) {

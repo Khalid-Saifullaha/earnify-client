@@ -48,7 +48,7 @@ const TaskDetails = () => {
       submission_info,
     };
 
-    console.table("Form Data:", submitData);
+    // console.table("Form Data:", submitData);
     setLoading(true);
     // post request db
     try {
@@ -62,7 +62,7 @@ const TaskDetails = () => {
       refetch();
       navigate("/dashboard/my-submission");
     } catch (error) {
-      console.error("Error submitting task:", error);
+      // console.error("Error submitting task:", error);
       alert("Failed to submit task. Please try again.");
     } finally {
       setLoading(false);

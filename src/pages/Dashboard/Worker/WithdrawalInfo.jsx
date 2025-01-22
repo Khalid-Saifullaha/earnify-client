@@ -55,7 +55,7 @@ const WithdrawalInfo = () => {
         toast.error("Failed to submit withdrawal request.");
       }
     } catch (error) {
-      console.error("Error submitting withdrawal:", error);
+      // console.error("Error submitting withdrawal:", error);
       toast.error(
         error.response?.data?.message || "An error occurred. Please try again."
       );

@@ -15,7 +15,7 @@ const PaymentHistory = () => {
         );
         setPaymentHistory(response.data);
       } catch (error) {
-        console.error("Error fetching payment history:", error);
+        // console.error("Error fetching payment history:", error);
       } finally {
         setLoading(false);
       }

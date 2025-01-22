@@ -48,7 +48,7 @@ const PaymentForm = ({ amount }) => {
       );
 
       if (error) {
-        console.error("Payment Error:", error);
+        // console.error("Payment Error:", error);
         toast.error("Payment Failed. Please try again.");
       } else if (paymentIntent && paymentIntent.status === "succeeded") {
         toast.success("Payment Successful!");
@@ -66,7 +66,7 @@ const PaymentForm = ({ amount }) => {
         }
       }
     } catch (err) {
-      console.error("Error during payment:", err);
+      // console.error("Error during payment:", err);
       toast.error("Something went wrong. Please try again.");
     } finally {
       setIsLoading(false);

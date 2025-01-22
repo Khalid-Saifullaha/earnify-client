@@ -2,12 +2,13 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Dashboard/Sidebar/Sidebar";
 import Navbar from "../components/Shared/Navbar/Navbar";
 import Footer from "../components/Shared/Footer/Footer";
+import DashboardNavbar from "../pages/Dashboard/Common/DashboardNavbar";
 
 const DashboardLayout = () => {
   return (
     <>
       <div className="relative min-h-screen md:flex bg-white">
-        <Navbar></Navbar>
+        <DashboardNavbar></DashboardNavbar>
         {/* Left Side: Sidebar Component */}
         <div>
           <Sidebar />

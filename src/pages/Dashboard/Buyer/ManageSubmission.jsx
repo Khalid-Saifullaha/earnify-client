@@ -41,7 +41,7 @@ const ManageSubmission = () => {
     const fetchBuyerStats = async () => {
       try {
         const response = await axiosSecure.get("/buyer-stat");
-        console.log("Buyer Stats Response:", response.data);
+        // console.log("Buyer Stats Response:", response.data);
 
         setBuyerStats({
           totalTasks: response.data.totalTasks || 0,
@@ -49,7 +49,7 @@ const ManageSubmission = () => {
           totalPayment: response.data.totalPayment || 0,
         });
       } catch (error) {
-        console.error("Error fetching buyer statistics:", error);
+        // console.error("Error fetching buyer statistics:", error);
       }
     };
 

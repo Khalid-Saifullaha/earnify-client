@@ -28,7 +28,7 @@ const TaskDataRow = ({ refetch, task }) => {
       toast.success("Task successfully removed.");
       refetch();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       toast.error(err.response?.data || "Failed to delete task.");
     } finally {
       setDeleteConfirmOpen(false);
@@ -42,7 +42,7 @@ const TaskDataRow = ({ refetch, task }) => {
       refetch();
       setIsModalOpen(false);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       toast.error(err.response?.data || "Failed to update task.");
     }
   };

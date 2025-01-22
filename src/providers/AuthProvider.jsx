@@ -35,7 +35,7 @@ const AuthProvider = ({ children }) => {
     },
     enabled: !!user?.email,
   });
-  console.log(coin);
+  // console.log(coin);
 
   const createUser = (email, password) => {
     setLoading(true);

@@ -63,7 +63,7 @@ const SignUp = () => {
       navigate("/");
       toast.success("Signup Successful");
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       toast.error(err?.message);
     }
   };

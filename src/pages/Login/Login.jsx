@@ -71,7 +71,7 @@ const Login = () => {
       navigate("/dashboard", { replace: true });
       toast.success("Login Successful");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       toast.error(err?.message || "Invalid email or password.");
     }
   };
@@ -96,7 +96,7 @@ const Login = () => {
       navigate("/dashboard", { replace: true });
       toast.success("Login Successful");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       toast.error(err?.message || "Something went wrong!");
     }
   };

@@ -31,7 +31,7 @@ const AdminStatistics = () => {
         const withdrawalsResponse = await axiosSecure.get("/withdrawals");
         setWithdrawals(withdrawalsResponse.data);
       } catch (error) {
-        console.error("Error fetching admin statistics or withdrawals:", error);
+        // console.error("Error fetching admin statistics or withdrawals:", error);
         toast.error("Failed to load data.");
       } finally {
         setLoading(false);
@@ -60,7 +60,7 @@ const AdminStatistics = () => {
 
       toast.success(response.data.message);
     } catch (error) {
-      console.error("Error approving withdrawal:", error);
+      // console.error("Error approving withdrawal:", error);
       toast.error("Failed to approve withdrawal.");
     }
   };
