@@ -5,15 +5,12 @@ import axios from "axios";
 import Container from "../Container";
 import avatarImg from "../../../assets/images/placeholder.jpg";
 import { FaCoins } from "react-icons/fa";
-import { FiBell, FiX } from "react-icons/fi";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [availableCoins, setAvailableCoins] = useState(0);
-  const [notifications, setNotifications] = useState([]);
-  const [unreadCount, setUnreadCount] = useState(0);
 
   useEffect(() => {
     const fetchCoins = async () => {
@@ -31,23 +28,6 @@ const Navbar = () => {
 
     fetchCoins();
   }, [user]);
-
-  const handleMarkAsRead = async () => {
-    try {
-      await axios.patch(
-        `${import.meta.env.VITE_API_URL}/notifications/mark-read/${user.email}`
-      );
-      setUnreadCount(0);
-      setNotifications((prevNotifications) =>
-        prevNotifications.map((notification) => ({
-          ...notification,
-          isRead: true,
-        }))
-      );
-    } catch (error) {
-      // console.error("Error marking notifications as read:", error);
-    }
-  };
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -113,38 +93,10 @@ const Navbar = () => {
                     <span>{availableCoins}</span>
                   </div>
 
-                  {/* Notification Icon */}
-                  <div className="relative">
-                    <FiBell
-                      className="w-6 h-6 text-white cursor-pointer"
-                      onClick={handleMarkAsRead}
-                    />
-                    {unreadCount > 0 && (
-                      <div className="absolute top-0 right-0 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
-                        {unreadCount}
-                      </div>
-                    )}
-                    <div className="absolute top-8 right-0 bg-white shadow-lg rounded-lg w-72">
-                      <div className="max-h-64 overflow-auto">
-                        {notifications.map((notification) => (
-                          <div
-                            key={notification._id}
-                            className={`px-4 py-2 ${
-                              notification.isRead
-                                ? "bg-gray-100"
-                                : "bg-yellow-100"
-                            }`}
-                          >
-                            <p>{notification.message}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
                   {/* User Profile */}
                   <div className="relative">
                     <img
+                      referrerPolicy="no-referrer"
                       src={user.photoURL || avatarImg}
                       alt="User Avatar"
                       className="h-10 w-10 rounded-full border-2 border-white cursor-pointer hover:border-gray-400 transition"
@@ -237,17 +189,7 @@ const Navbar = () => {
                     Available Coins:{" "}
                     <span className="text-black">{availableCoins}</span>
                   </div>
-                  <div className="relative">
-                    <FiBell
-                      className="w-6 h-6 text-gray-600 cursor-pointer"
-                      onClick={closeMenu}
-                    />
-                    {unreadCount > 0 && (
-                      <div className="absolute top-0 right-0 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
-                        {unreadCount}
-                      </div>
-                    )}
-                  </div>
+
                   <div className="relative">
                     <img
                       src={user.photoURL || avatarImg}

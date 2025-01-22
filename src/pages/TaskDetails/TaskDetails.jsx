@@ -160,7 +160,7 @@ const TaskDetails = () => {
                     Task Title
                   </label>
                   <input
-                    className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                    className="w-full px-4 py-3 text-gray-800 border border-purple-600 focus:outline-lime-500 rounded-md bg-white"
                     name="task_title"
                     id="task_title"
                     defaultValue={task_title}
@@ -176,7 +176,7 @@ const TaskDetails = () => {
                     Task ID
                   </label>
                   <input
-                    className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                    className="w-full px-4 py-3 text-gray-800 border border-purple-600 focus:outline-lime-500 rounded-md bg-white"
                     name="task_id"
                     id="task_id"
                     defaultValue={_id}
@@ -192,7 +192,7 @@ const TaskDetails = () => {
                     Worker Name
                   </label>
                   <input
-                    className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                    className="w-full px-4 py-3 text-gray-800 border border-purple-600 focus:outline-lime-500 rounded-md bg-white"
                     name="worker_name"
                     id="worker_name"
                     type="text"
@@ -207,7 +207,7 @@ const TaskDetails = () => {
                     Worker Email
                   </label>
                   <input
-                    className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                    className="w-full px-4 py-3 text-gray-800 border border-purple-600 focus:outline-lime-500 rounded-md bg-white"
                     name="worker_email"
                     id="worker_email"
                     type="email"
@@ -227,7 +227,7 @@ const TaskDetails = () => {
                     Payable Amount (per worker)
                   </label>
                   <input
-                    className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                    className="w-full px-4 py-3 text-gray-800 border border-purple-600 focus:outline-lime-500 rounded-md bg-white"
                     name="payable_amount"
                     id="payable_amount"
                     type="number"
@@ -244,7 +244,7 @@ const TaskDetails = () => {
                     Current Date
                   </label>
                   <input
-                    className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                    className="w-full px-4 py-3 text-gray-800 border border-purple-600 focus:outline-lime-500 rounded-md bg-white"
                     name="current_date"
                     id="current_date"
                     type="date"
@@ -259,7 +259,7 @@ const TaskDetails = () => {
                     Buyer Name
                   </label>
                   <input
-                    className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                    className="w-full px-4 py-3 text-gray-800 border border-purple-600 focus:outline-lime-500 rounded-md bg-white"
                     name="buyer_name"
                     id="buyer_name"
                     type="text"
@@ -274,7 +274,7 @@ const TaskDetails = () => {
                     Buyer Email
                   </label>
                   <input
-                    className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                    className="w-full px-4 py-3 text-gray-800 border border-purple-600 focus:outline-lime-500 rounded-md bg-white"
                     name="buyer_email"
                     id="buyer_email"
                     type="email"
@@ -295,7 +295,7 @@ const TaskDetails = () => {
                   <textarea
                     id="submission_info"
                     placeholder="Enter submission details"
-                    className="block rounded-md focus:lime-300 w-full h-32 px-4 py-3 text-gray-800 border border-lime-300 bg-white focus:outline-lime-500"
+                    className="block rounded-md focus:lime-300 w-full h-32 px-4 py-3 text-gray-800 border border-purple-600 bg-white focus:outline-lime-500"
                     name="submission_info"
                     required
                   ></textarea>
@@ -304,7 +304,7 @@ const TaskDetails = () => {
               <div className="flex justify-center items-center ">
                 <button
                   type="submit"
-                  className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-lime-500"
+                  className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-gradient-to-r from-indigo-600 to-purple-600"
                 >
                   {loading ? (
                     <div>

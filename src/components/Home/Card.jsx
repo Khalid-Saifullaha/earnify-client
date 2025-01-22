@@ -38,7 +38,7 @@ const Card = ({ task }) => {
       </div>
       {/* View Details Button */}
       <Link to={`/task/${_id}`}>
-        <button className="mt-4 w-full bg-lime-500 hover:bg-lime-600 text-white py-2 px-4 rounded-md">
+        <button className="mt-4 w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-2 px-4 rounded-md">
           View Details
         </button>
       </Link>

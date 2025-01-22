@@ -56,7 +56,7 @@ const Testimonials = () => {
 
   return (
     <section className="my-20">
-      <h2 className="text-2xl font-bold text-gray-500 text-center ">
+      <h2 className="text-4xl font-bold text-gray-700 text-center ">
         Testimonial
       </h2>
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
@@ -64,11 +64,19 @@ const Testimonials = () => {
           <SwiperSlide key={review.id}>
             <div className="flex flex-col items-center m-24 my-16 bg-white p-8 rounded-lg shadow-none">
               {/* User Image */}
-              <img
-                src={review.image}
-                alt={review.name}
-                className="w-24 h-24 object-cover rounded-full mb-4"
-              />
+              <div class="flex flex-col items-center">
+                <div class="relative w-24 h-24 mb-4 rounded-full border-4 border-purple-600">
+                  <img
+                    src={review.image}
+                    alt={review.name}
+                    className="w-24 h-24 object-cover rounded-full mb-4 shadow-lg transform hover:scale-110 transition-all duration-300"
+                  />
+                </div>
+                <h3 class="text-lg font-semibold text-gray-800">
+                  {review.name}
+                </h3>
+              </div>
+
               {/* User Rating */}
               <StarRating rating={review.rating} />
               {/* User Quote */}

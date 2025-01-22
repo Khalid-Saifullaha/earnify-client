@@ -113,6 +113,7 @@ const DashboardNavbar = () => {
               <h2>{role}</h2>
             </div>
             <img
+              referrerPolicy="no-referrer"
               src={user?.photoURL || avatarImg}
               alt="User Avatar"
               className="h-10 w-10 rounded-full border-2 border-white cursor-pointer hover:border-gray-400 transition"

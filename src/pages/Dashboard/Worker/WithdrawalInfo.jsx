@@ -87,7 +87,7 @@ const WithdrawalInfo = () => {
                 value={coinToWithdraw}
                 onChange={handleCoinChange}
                 placeholder="Enter coins to withdraw"
-                className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                className="w-full px-4 py-3 text-gray-800 border border-purple-600 focus:outline-lime-500 rounded-md bg-white"
                 min="200"
                 max={coin}
                 required
@@ -103,7 +103,7 @@ const WithdrawalInfo = () => {
                 type="text"
                 value={withdrawAmount}
                 readOnly
-                className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-gray-100"
+                className="w-full px-4 py-3 text-gray-800 border border-purple-600 focus:outline-lime-500 rounded-md bg-gray-100"
               />
             </div>
 
@@ -115,7 +115,7 @@ const WithdrawalInfo = () => {
               <select
                 value={paymentSystem}
                 onChange={(e) => setPaymentSystem(e.target.value)}
-                className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                className="w-full px-4 py-3 text-gray-800 border border-purple-600 focus:outline-lime-500 rounded-md bg-white"
                 required
               >
                 <option value="">Select Payment System</option>
@@ -136,7 +136,7 @@ const WithdrawalInfo = () => {
                 value={accountNumber}
                 onChange={(e) => setAccountNumber(e.target.value)}
                 placeholder="Enter your account number"
-                className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                className="w-full px-4 py-3 text-gray-800 border border-purple-600 focus:outline-lime-500 rounded-md bg-white"
                 required
               />
             </div>
@@ -146,7 +146,7 @@ const WithdrawalInfo = () => {
           {coin >= 200 ? (
             <button
               type="submit"
-              className="w-full mt-5 p-3 text-center font-medium text-white transition duration-200 rounded shadow-md bg-lime-500 hover:bg-lime-600"
+              className="w-full mt-5 p-3 text-center font-medium text-white transition duration-200 rounded shadow-md bg-gradient-to-r from-indigo-600 to-purple-600"
             >
               Withdraw
             </button>

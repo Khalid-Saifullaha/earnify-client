@@ -113,7 +113,7 @@ const MySubmission = () => {
                   className={`px-4 py-2 rounded-md font-semibold ${
                     page === 1
                       ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-                      : "bg-lime-500 text-white hover:bg-lime-600"
+                      : "bg-gradient-to-r from-indigo-600 to-purple-600 text-white "
                   }`}
                 >
                   Previous
@@ -127,7 +127,7 @@ const MySubmission = () => {
                   className={`px-4 py-2 rounded-md font-semibold ${
                     page === totalPages
                       ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-                      : "bg-lime-500 text-white hover:bg-lime-600"
+                      : "bg-gradient-to-r from-indigo-600 to-purple-600 text-white"
                   }`}
                 >
                   Next

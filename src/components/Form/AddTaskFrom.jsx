@@ -25,7 +25,7 @@ const AddTaskForm = ({
                 Task Title
               </label>
               <input
-                className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                className="w-full px-4 py-3 text-gray-800 border border-purple-600 focus:outline-purple-600 rounded-md bg-white"
                 name="task_title"
                 id="task_title"
                 type="text"
@@ -42,7 +42,7 @@ const AddTaskForm = ({
               <textarea
                 id="task_detail"
                 placeholder="Detailed description of the task"
-                className="block rounded-md focus:lime-300 w-full h-32 px-4 py-3 text-gray-800 border border-lime-300 bg-white focus:outline-lime-500"
+                className="block rounded-md focus:lime-300 w-full h-32 px-4 py-3 text-gray-800 border border-purple-600 bg-white focus:outline-lime-500"
                 name="task_detail"
                 required
               ></textarea>
@@ -57,7 +57,7 @@ const AddTaskForm = ({
                 onChange={(e) =>
                   setRequiredWorkers(Math.max(0, parseInt(e.target.value) || 0))
                 }
-                className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                className="w-full px-4 py-3 text-gray-800 border border-purple-600 focus:outline-lime-500 rounded-md bg-white"
                 name="required_workers"
                 id="required_workers"
                 type="number"
@@ -77,7 +77,7 @@ const AddTaskForm = ({
                 onChange={(e) =>
                   setPayableAmount(Math.max(0, parseFloat(e.target.value) || 0))
                 }
-                className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                className="w-full px-4 py-3 text-gray-800 border border-purple-600 focus:outline-lime-500 rounded-md bg-white"
                 name="payable_amount"
                 id="payable_amount"
                 type="number"
@@ -92,7 +92,7 @@ const AddTaskForm = ({
                 Completion Date
               </label>
               <DatePicker
-                className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                className="w-full px-4 py-3 text-gray-800 border border-purple-600 focus:outline-lime-500 rounded-md bg-white"
                 selected={completionDate}
                 onChange={(date) => setCompletionDate(date)}
                 placeholderText="Select a completion date"
@@ -109,7 +109,7 @@ const AddTaskForm = ({
                 Submission Info
               </label>
               <input
-                className="w-full px-4 py-3 text-gray-800 border border-lime-300 focus:outline-lime-500 rounded-md bg-white"
+                className="w-full px-4 py-3 text-gray-800 border border-purple-600 focus:outline-lime-500 rounded-md bg-white"
                 name="submission_info"
                 id="submission_info"
                 type="text"
@@ -137,7 +137,7 @@ const AddTaskForm = ({
                       accept="image/*"
                       hidden
                     />
-                    <div className="bg-lime-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-lime-500">
+                    <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-lime-500">
                       {uploadImage?.image?.name}
                     </div>
                   </label>
@@ -156,7 +156,7 @@ const AddTaskForm = ({
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-lime-500"
+              className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-gradient-to-r from-indigo-600 to-purple-600"
               disabled={totalPayable <= 0}
             >
               {loading ? (

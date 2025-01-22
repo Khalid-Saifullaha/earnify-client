@@ -64,10 +64,10 @@ const Faq = () => {
       <div className="max-w-7xl mx-auto ">
         {/* Section Header */}
         <div className="text-center mb-10">
-          <h2 className="text-4xl font-extrabold text-gray-800">
+          <h2 className="text-4xl font-extrabold text-gray-700">
             Frequently Asked Questions
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
+          <p className="mt-4 text-lg text-gray-700">
             Find answers to common questions for Workers, Buyers, and Admins.
           </p>
         </div>

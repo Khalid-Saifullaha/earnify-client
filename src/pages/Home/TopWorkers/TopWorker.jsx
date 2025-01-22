@@ -33,23 +33,37 @@ const TopWorker = () => {
   }
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold text-center text-gray-500 mb-6">
+    <div className="py-10 px-4 bg-white">
+      <h2 className="text-3xl font-bold text-center text-gray-700 mb-10">
         Top Workers
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-8">
         {workers.map((worker) => (
           <div
             key={worker._id}
-            className="bg-white shadow-md p-4 rounded-lg text-center"
+            className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition duration-300"
           >
-            <img
-              src={worker.image || "https://via.placeholder.com/100"}
-              alt={worker.name}
-              className="w-24 h-24 mx-auto rounded-full mb-2"
-            />
-            <h3 className="text-lg font-semibold">{worker.name || "N/A"}</h3>
-            <p className="text-gray-600">{worker.coins} Coins</p>
+            <div className="bg-gradient-to-b from-indigo-600 to-purple-600 p-4">
+              <img
+                src={worker.image || "https://via.placeholder.com/100"}
+                alt={worker.name}
+                className="w-24 h-24 mx-auto rounded-full border-4 border-white shadow-md"
+              />
+            </div>
+            <div className="p-6 text-center">
+              <h3 className="text-lg font-semibold text-gray-800">
+                {worker.name || "N/A"}
+              </h3>
+              <p className="text-sm text-gray-500 mt-1">
+                {worker.email || "No Email"}
+              </p>
+              <div className="mt-4">
+                <span className="text-xl font-bold text-yellow-500">
+                  {worker.coins}
+                </span>{" "}
+                <span className="text-sm text-gray-600">Coins</span>
+              </div>
+            </div>
           </div>
         ))}
       </div>
