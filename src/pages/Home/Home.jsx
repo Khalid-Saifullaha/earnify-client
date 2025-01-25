@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div>
       <Helmet>
-        <title> Earnify | Buy Your Desired Plant</title>
+        <title> Earnify </title>
       </Helmet>
       <Banner></Banner>
 
