@@ -5,6 +5,7 @@ import axios from "axios";
 import Container from "../Container";
 import avatarImg from "../../../assets/images/placeholder.jpg";
 import { FaCoins } from "react-icons/fa";
+import { FiX } from "react-icons/fi";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
