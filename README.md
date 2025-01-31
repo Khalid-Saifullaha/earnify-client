@@ -27,19 +27,15 @@
 
 5. **Admin Dashboard:** A centralized dashboard for admins to monitor platform activities, approve tasks, and manage users.
 
-6. **Real-Time Updates:** Users receive real-time updates on task status, notifications, and messages.
+6. **User-Friendly Interface:** Intuitive design ensures smooth navigation for all users.
 
-7. **User-Friendly Interface:** Intuitive design ensures smooth navigation for all users.
+7. **Secure Authentication:** Role-based login ensures data privacy and secure access for all users.
 
-8. **Secure Authentication:** Role-based login ensures data privacy and secure access for all users.
+8. **Responsive Design:** The platform is fully responsive and optimized for desktop, tablet, and mobile devices.
 
-9. **Responsive Design:** The platform is fully responsive and optimized for desktop, tablet, and mobile devices.
+9. **Search and Filters:** Powerful search and filtering options to find tasks or users quickly.
 
-10. **Integrated Feedback System:** Users can provide feedback on tasks, workers, or buyers, improving overall quality.
-
-11. **Search and Filters:** Powerful search and filtering options to find tasks or users quickly.
-
-12. **Activity Logs:** Detailed logs for admin to monitor all user activities and maintain transparency.
+10. **Activity Logs:** Detailed logs for admin to monitor all user activities and maintain transparency.
 
 ---
 
