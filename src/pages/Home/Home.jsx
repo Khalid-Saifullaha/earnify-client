@@ -19,7 +19,7 @@ const Home = () => {
 
         <div>
           <section class="mt-16 py-16">
-            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="">
               <div class="text-center mb-16">
                 <h2 class="text-4xl font-extrabold text-gray-700 sm:text-5xl">
                   How It Works
