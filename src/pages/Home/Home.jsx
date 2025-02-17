@@ -95,6 +95,71 @@ const Home = () => {
         </div>
 
         <Faq />
+
+        <section className=" py-16">
+          <div className="container mx-auto ">
+            <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">
+              Why Choose Us?
+            </h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+                <h3 className="text-xl font-semibold text-purple-600 mb-4">
+                  Fast Payments
+                </h3>
+                <p className="text-gray-600">
+                  Get your earnings quickly and securely with fast payment
+                  processing.
+                </p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+                <h3 className="text-xl font-semibold text-purple-600 mb-4">
+                  User-Friendly Interface
+                </h3>
+                <p className="text-gray-600">
+                  Navigate the platform effortlessly, whether you're a worker or
+                  a buyer.
+                </p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+                <h3 className="text-xl font-semibold text-purple-600 mb-4">
+                  Trusted Buyers
+                </h3>
+                <p className="text-gray-600">
+                  Work with reliable buyers who value your effort and pay
+                  fairly.
+                </p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+                <h3 className="text-xl font-semibold text-purple-600 mb-4">
+                  Secure Transactions
+                </h3>
+                <p className="text-gray-600">
+                  Your personal and payment details are always kept safe and
+                  secure.
+                </p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+                <h3 className="text-xl font-semibold text-purple-600 mb-4">
+                  Variety of Tasks
+                </h3>
+                <p className="text-gray-600">
+                  Choose from a wide range of tasks that match your skills and
+                  interests.
+                </p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+                <h3 className="text-xl font-semibold text-purple-600 mb-4">
+                  24/7 Support
+                </h3>
+                <p className="text-gray-600">
+                  Our support team is always ready to assist you, anytime,
+                  anywhere.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <Contact />
 
         <Testimonials></Testimonials>
