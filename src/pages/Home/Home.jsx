@@ -160,6 +160,26 @@ const Home = () => {
           </div>
         </section>
 
+        <section className="bg-white py-16">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+              About Earnify
+            </h2>
+            <p className="text-lg text-gray-700 ">
+              Earnify is a micro-tasking platform that connects people with
+              small jobs they can complete online to earn money. Our mission is
+              to make it easy for anyone, anywhere, to start earning by
+              completing simple tasks.
+            </p>
+            <p className="text-lg text-gray-700 ">
+              Whether you're a skilled worker or a beginner, Earnify offers a
+              variety of tasks suitable for everyone. With fast payments, secure
+              transactions, and a supportive community, Earnify is the perfect
+              platform to get started and start earning.
+            </p>
+          </div>
+        </section>
+
         <Contact />
 
         <Testimonials></Testimonials>
