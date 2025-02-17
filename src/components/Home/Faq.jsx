@@ -61,7 +61,7 @@ const Faq = () => {
 
   return (
     <div className="bg-white py-12">
-      <div className="max-w-7xl mx-auto ">
+      <div className=" ">
         {/* Section Header */}
         <div className="text-center mb-10">
           <h2 className="text-4xl font-extrabold text-gray-700">

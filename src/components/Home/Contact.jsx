@@ -20,7 +20,7 @@ const Contact = () => {
 
   return (
     <div className="bg-white py-12">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="">
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl font-extrabold text-gray-800 sm:text-4xl">
