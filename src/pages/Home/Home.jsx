@@ -161,21 +161,41 @@ const Home = () => {
         </section>
 
         <section className="bg-white py-16">
-          <div className=" text-center">
+          <div className="text-center">
             <h2 className="text-3xl font-bold text-gray-800 mb-6">
               About Earnify
             </h2>
-            <p className="text-lg text-gray-700 ">
+            <p className="text-lg text-gray-700 mb-4">
               Earnify is a micro-tasking platform that connects people with
               small jobs they can complete online to earn money. Our mission is
               to make it easy for anyone, anywhere, to start earning by
               completing simple tasks.
             </p>
-            <p className="text-lg text-gray-700 ">
+            <p className="text-lg text-gray-700 mb-4">
               Whether you're a skilled worker or a beginner, Earnify offers a
               variety of tasks suitable for everyone. With fast payments, secure
               transactions, and a supportive community, Earnify is the perfect
               platform to get started and start earning.
+            </p>
+            <p className="text-lg text-gray-700 mb-4">
+              We believe in the power of technology to create opportunities and
+              empower individuals. Our platform is designed to be user-friendly,
+              providing a seamless experience for both workers and buyers. The
+              flexibility of Earnify allows you to choose tasks that suit your
+              skills and schedule, making it easier than ever to earn money on
+              your own terms.
+            </p>
+            <p className="text-lg text-gray-700 mb-4">
+              As part of our commitment to transparency and trust, Earnify
+              provides detailed task descriptions and clear payment structures,
+              so you always know what to expect. Whether you’re looking for a
+              side hustle or a way to make extra income, Earnify is here to help
+              you achieve your financial goals.
+            </p>
+            <p className="text-lg text-gray-700">
+              Join thousands of satisfied users who have already unlocked new
+              earning opportunities through Earnify. Get started today and see
+              how simple it can be to earn money online!
             </p>
           </div>
         </section>
