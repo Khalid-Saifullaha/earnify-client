@@ -10,12 +10,17 @@ const Faq = () => {
         {
           question: "How do I withdraw my earnings?",
           answer:
-            "You can withdraw your earnings through the dashboard under the 'Withdraw' section.",
+            "You can withdraw your earnings through the dashboard under the 'Withdraw' section. You need to provide your payment details and the amount you'd like to withdraw. The withdrawal process is fast and secure, and your earnings will be processed within 24 hours.",
         },
         {
           question: "What tasks can I complete?",
           answer:
-            "You can complete any tasks that match your skills and interests.",
+            "You can complete any tasks that match your skills and interests. Tasks may include data entry, writing, design, marketing, customer service, and much more. You can filter tasks based on categories or select from the available tasks on your dashboard.",
+        },
+        {
+          question: "How do I track my progress?",
+          answer:
+            "You can easily track your progress on the 'My Tasks' section of the dashboard. It shows the tasks you have completed, pending tasks, and the earnings for each task.",
         },
       ],
     },
@@ -25,12 +30,17 @@ const Faq = () => {
         {
           question: "What are the guidelines for creating tasks?",
           answer:
-            "Ensure your tasks are clear, concise, and follow platform policies.",
+            "Ensure your tasks are clear, concise, and follow platform policies. You should provide enough details for the workers to understand the task fully. Include any specific requirements, deadlines, and any files needed for the task. Also, make sure to set fair compensation for the tasks.",
         },
         {
           question: "Can I review submissions before payment?",
           answer:
-            "Yes, you can review and approve submissions before releasing payment.",
+            "Yes, you can review and approve submissions before releasing payment. Once a worker completes a task, you will have the opportunity to review their work, request revisions if necessary, and approve the task for payment. This process ensures quality and satisfaction for both parties.",
+        },
+        {
+          question: "What happens if I am not satisfied with the work?",
+          answer:
+            "If you're not satisfied with the work, you can request revisions or dispute the task through the platform. Admins will review the dispute based on the evidence provided by both parties and help resolve the issue in a fair manner.",
         },
       ],
     },
@@ -40,12 +50,17 @@ const Faq = () => {
         {
           question: "How are disputes resolved?",
           answer:
-            "Admins review disputes based on evidence and platform guidelines to make a fair decision.",
+            "Admins review disputes based on evidence and platform guidelines to make a fair decision. Both parties involved in the dispute will be asked to submit their evidence and explain their side. Admins will then evaluate the situation and come to a resolution, which may include requesting additional work, revising submissions, or issuing refunds.",
         },
         {
           question: "What are my responsibilities as an Admin?",
           answer:
-            "Admins oversee platform activities, manage users, and ensure smooth operations.",
+            "Admins oversee platform activities, manage users, and ensure smooth operations. Their responsibilities include approving or rejecting tasks, resolving disputes, monitoring payment transactions, ensuring compliance with platform policies, and maintaining a positive and secure environment for users.",
+        },
+        {
+          question: "Can Admins modify tasks or payments?",
+          answer:
+            "Admins have the authority to modify tasks if there are errors or issues, such as incorrect descriptions or payment terms. Admins can also oversee payments, ensuring that the transactions are completed properly and in accordance with platform rules.",
         },
       ],
     },
