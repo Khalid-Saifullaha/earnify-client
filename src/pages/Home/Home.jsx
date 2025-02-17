@@ -97,7 +97,7 @@ const Home = () => {
         <Faq />
 
         <section className=" py-16">
-          <div className="container mx-auto ">
+          <div className=" ">
             <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">
               Why Choose Us?
             </h2>
@@ -161,7 +161,7 @@ const Home = () => {
         </section>
 
         <section className="bg-white py-16">
-          <div className="container mx-auto px-4 text-center">
+          <div className=" text-center">
             <h2 className="text-3xl font-bold text-gray-800 mb-6">
               About Earnify
             </h2>
