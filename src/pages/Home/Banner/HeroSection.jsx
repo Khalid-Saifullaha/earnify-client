@@ -4,7 +4,7 @@ import { FaPlayCircle, FaUsers, FaCheckCircle } from "react-icons/fa";
 
 const HeroSection = () => {
   return (
-    <section className="bg-gradient-to-br from-gray-50 to-white px-4 md:px-16 py-16 md:py-24">
+    <section className="bg-gray-50  px-4 md:px-20 py-16 md:py-24">
       <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center">
         {/* Left side */}
         <div className="space-y-6">
