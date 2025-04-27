@@ -5,6 +5,7 @@ import Container from "../../components/Shared/Container";
 import Testimonials from "./Testimonial/Testimonials";
 import Faq from "../../components/Home/Faq";
 import Contact from "../../components/Home/Contact";
+import HeroSection from "./Banner/HeroSection";
 
 const Home = () => {
   return (
@@ -12,7 +13,7 @@ const Home = () => {
       <Helmet>
         <title> Earnify </title>
       </Helmet>
-      <Banner></Banner>
+      <HeroSection />
 
       <Container>
         <TopWorker></TopWorker>
