@@ -39,7 +39,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed w-full bg-gradient-to-r from-indigo-600 to-purple-600 z-10 shadow-lg">
+    <div className="fixed w-full bg-blue-600 z-10 shadow-lg">
       <div className="py-4 border-b-2 border-gray-300">
         <Container>
           <div className="flex items-center justify-between gap-3 md:gap-0">
