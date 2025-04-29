@@ -11,7 +11,7 @@ const TopWorker = () => {
     const fetchTopWorkers = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/top-workers`
+          `https://earnify-amber.vercel.app/top-workers`
         );
         setWorkers(response.data);
         setLoading(false);
