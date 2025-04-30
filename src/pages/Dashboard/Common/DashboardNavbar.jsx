@@ -73,7 +73,7 @@ const DashboardNavbar = () => {
   if (loading || isLoading) return <LoadingSpinner />;
 
   return (
-    <div className="fixed w-full bg-blue-600 z-10 shadow-lg">
+    <div className="fixed w-full bg-blue-700 z-10 shadow-md">
       <div className="py-4 border-b-2 border-gray-300">
         <div className="container mx-auto flex items-center justify-between px-4 md:pl-40">
           {/* Logo */}
