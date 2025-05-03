@@ -106,9 +106,11 @@ const Navbar = () => {
                     {profileOpen && (
                       <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-20">
                         <div className="py-1">
-                          <div className="px-4 py-2 text-sm text-gray-700">
-                            {user.displayName || "User"}
-                          </div>
+                          <Link to="/dashboard/profile">
+                            <div className="px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-gray-100">
+                              {user.displayName || "User"}
+                            </div>
+                          </Link>
                           <button
                             onClick={logOut}
                             className="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
@@ -183,9 +185,11 @@ const Navbar = () => {
                     {profileOpen && (
                       <div className="absolute right-12 mt-2 w-48 bg-white rounded-md shadow-lg z-20">
                         <div className="py-1">
-                          <div className="px-4 py-2 text-sm text-gray-700">
-                            {user.displayName || "User"}
-                          </div>
+                          <Link to="/dashboard/profile">
+                            <div className="px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-gray-100">
+                              {user.displayName || "User"}
+                            </div>
+                          </Link>
                           <button
                             onClick={logOut}
                             className="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
