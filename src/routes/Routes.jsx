@@ -23,6 +23,7 @@ import PaymentHistory from "../pages/Dashboard/Buyer/PaymentHistory";
 import TaskList from "../pages/Dashboard/Worker/TaskList";
 import MyHome from "../pages/Dashboard/Worker/MyHome";
 import WithdrawalInfo from "../pages/Dashboard/Worker/WithdrawalInfo";
+import HowItWorks from "../pages/HowItWorks";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
       {
         path: "/task/:id",
         element: <TaskDetails></TaskDetails>,
+      },
+      {
+        path: "/how-it-works",
+        element: <HowItWorks />,
       },
     ],
   },

@@ -119,16 +119,6 @@ const Navbar = () => {
                       </div>
                     )}
                   </div>
-
-                  {/* Join as Developer */}
-                  <a
-                    href="https://github.com/Khalid-Saifullaha"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-medium text-blue-400 hover:underline"
-                  >
-                    Join as Developer
-                  </a>
                 </div>
               ) : (
                 <>
@@ -144,14 +134,6 @@ const Navbar = () => {
                   >
                     Sign Up
                   </Link>
-                  <a
-                    href="https://github.com/Khalid-Saifullaha"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-medium text-blue-400 hover:underline"
-                  >
-                    Join as Developer
-                  </a>
                 </>
               )}
             </div>
@@ -214,14 +196,6 @@ const Navbar = () => {
                       </div>
                     )}
                   </div>
-                  <a
-                    href="https://github.com/Khalid-Saifullaha"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-lg font-medium text-blue-500 hover:underline"
-                  >
-                    Join as Developer
-                  </a>
                 </>
               ) : (
                 <>
@@ -239,14 +213,6 @@ const Navbar = () => {
                   >
                     Sign Up
                   </Link>
-                  <a
-                    href="https://github.com/Khalid-Saifullaha"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-lg font-medium text-blue-500 hover:underline"
-                  >
-                    Join as Developer
-                  </a>
                 </>
               )}
             </div>

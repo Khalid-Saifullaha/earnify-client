@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaPlayCircle, FaUsers, FaCheckCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -35,9 +36,12 @@ const HeroSection = () => {
             transition={{ duration: 0.6, ease: "easeInOut", delay: 0.4 }}
             className="flex space-x-4"
           >
-            <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full transition duration-300 shadow-lg">
+            <Link
+              to="/how-it-works"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full transition duration-300 shadow-lg"
+            >
               Learn more
-            </button>
+            </Link>
             <a
               href="#"
               className="text-blue-600 hover:text-blue-700 font-semibold py-3 px-6 rounded-full transition duration-300 flex items-center gap-2"
