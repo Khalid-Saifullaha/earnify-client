@@ -92,7 +92,7 @@ const Faq = () => {
           <input
             type="text"
             placeholder="Search FAQs..."
-            className="w-full px-4 py-3 border rounded-lg shadow-sm  bg-gradient-to-r from-indigo-600 to-purple-600 text-white"
+            className="w-full px-4 py-3 border rounded-lg shadow-sm bg-blue-500 text-white"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />

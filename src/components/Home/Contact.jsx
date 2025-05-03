@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+// Import the necessary icons from react-icons
+import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -19,29 +21,29 @@ const Contact = () => {
   };
 
   return (
-    <div className="bg-white py-12">
-      <div className="">
+    <div className="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-extrabold text-gray-800 sm:text-4xl">
-            Contact Us
+          <h2 className="text-4xl font-extrabold text-gray-800 sm:text-4xl mb-4">
+            Get in Touch with Us
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
-            We’d love to hear from you! Fill out the form below, and we’ll get
-            back to you as soon as possible.
+          <p className="text-lg text-gray-600 mb-8">
+            We'd love to hear from you! Fill out the form and we'll get back to
+            you as soon as possible.
           </p>
         </div>
 
-        {/* Flex Container for Two Divs */}
-        <div className="flex flex-wrap justify-between gap-8">
-          {/* Contact Form Div */}
-          <div className="flex-1 bg-white shadow-lg rounded-lg p-8">
+        {/* Flex Container for Form and Company Info */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Contact Form Section */}
+          <div className="bg-white shadow-xl rounded-lg p-8">
             <form onSubmit={handleSubmit}>
               <div className="space-y-6">
                 {/* Name Field */}
                 <div>
                   <label className="block text-lg font-semibold text-gray-700">
-                    Name
+                    Full Name
                   </label>
                   <input
                     type="text"
@@ -49,7 +51,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="mt-2 w-full px-4 py-3 border rounded-lg bg-gray-100  focus:outline-none focus:ring-2 focus:focus:bg-gradient-to-r from-indigo-600 to-purple-600 text-white"
+                    className="mt-2 w-full px-4 py-3 border rounded-xl bg-gray-100 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     placeholder="Enter your name"
                   />
                 </div>
@@ -57,7 +59,7 @@ const Contact = () => {
                 {/* Email Field */}
                 <div>
                   <label className="block text-lg font-semibold text-gray-700">
-                    Email
+                    Email Address
                   </label>
                   <input
                     type="email"
@@ -65,23 +67,23 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="mt-2 w-full px-4 py-3 border rounded-lg bg-gray-100  focus:outline-none focus:ring-2 focus:bg-gradient-to-r from-indigo-600 to-purple-600 text-white"
-                    placeholder="Enter your email"
+                    className="mt-2 w-full px-4 py-3 border rounded-xl bg-gray-100 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    placeholder="youremail@example.com"
                   />
                 </div>
 
                 {/* Message Field */}
                 <div>
                   <label className="block text-lg font-semibold text-gray-700">
-                    Message
+                    Your Message
                   </label>
                   <textarea
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    className="mt-2 w-full px-4 py-3 border rounded-lg bg-gray-100  focus:outline-none focus:ring-2 focus:bg-gradient-to-r from-indigo-600 to-purple-600 text-white"
-                    placeholder="Write your message"
+                    className="mt-2 w-full px-4 py-3 border rounded-xl bg-gray-100 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    placeholder="Write your message here..."
                     rows="6"
                   />
                 </div>
@@ -90,28 +92,27 @@ const Contact = () => {
                 <div>
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-indigo-600 to-purple-600  text-white py-3 px-6 rounded-lg text-lg font-medium"
+                    className="w-full bg-indigo-600 text-white py-3 px-6 rounded-xl text-lg font-semibold transition duration-300 hover:bg-indigo-700"
                   >
-                    Submit
+                    Send Message
                   </button>
                 </div>
               </div>
             </form>
           </div>
 
-          {/* Engaging Company Info Section */}
-          <div className="flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-8 rounded-lg shadow-lg">
-            <h3 className="text-2xl font-semibold mb-4">About Our Company</h3>
+          {/* Company Info Section */}
+          <div className="bg-indigo-600 text-white p-8 rounded-lg shadow-xl">
+            <h3 className="text-2xl font-semibold mb-6">About Our Company</h3>
             <p className="text-lg mb-6">
-              We are dedicated to connecting workers and buyers through an
-              easy-to-use platform. Our mission is to provide opportunities for
-              people to earn and for businesses to find skilled workers for
-              their tasks.
+              We connect skilled workers with businesses that need them. Our
+              platform makes it easy for workers to find tasks and for
+              businesses to find skilled professionals to help them.
             </p>
 
             {/* Contact Info */}
             <div className="mb-6">
-              <h4 className="text-xl font-semibold">Contact Information</h4>
+              <h4 className="text-xl font-semibold">Contact Details</h4>
               <ul className="mt-4 space-y-3">
                 <li>
                   <strong>Email:</strong> khalidsaifullaha3@gmail.com
@@ -120,7 +121,7 @@ const Contact = () => {
                   <strong>Phone:</strong> +123 456 7890
                 </li>
                 <li>
-                  <strong>Address:</strong> Myminshing, Dhaka,Banyladesh
+                  <strong>Address:</strong> Mymensingh, Dhaka, Bangladesh
                 </li>
               </ul>
             </div>
@@ -129,14 +130,30 @@ const Contact = () => {
             <div>
               <h4 className="text-xl font-semibold">Follow Us</h4>
               <div className="mt-4 flex space-x-6">
-                <a href="#" className="text-2xl text-white hover:text-gray-300">
-                  <i className="fab fa-facebook-f"></i>
+                {/* React Icons for Social Media */}
+                <a
+                  href="#"
+                  className="text-2xl text-white hover:text-gray-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaFacebookF />
                 </a>
-                <a href="#" className="text-2xl text-white hover:text-gray-300">
-                  <i className="fab fa-twitter"></i>
+                <a
+                  href="#"
+                  className="text-2xl text-white hover:text-gray-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaTwitter />
                 </a>
-                <a href="#" className="text-2xl text-white hover:text-gray-300">
-                  <i className="fab fa-instagram"></i>
+                <a
+                  href="#"
+                  className="text-2xl text-white hover:text-gray-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaInstagram />
                 </a>
               </div>
             </div>

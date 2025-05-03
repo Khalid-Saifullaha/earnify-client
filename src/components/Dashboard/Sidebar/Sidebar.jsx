@@ -24,10 +24,10 @@ const Sidebar = () => {
   return (
     <div className="relative">
       {/* Top Navbar */}
-      <div className="bg-gray-100 text-gray-800 flex justify-between md:hidden p-4">
+      <div className="bg-blue-500 text-gray-800 flex justify-between md:hidden p-4">
         <button
           onClick={toggleSidebar}
-          className="mobile-menu-button p-4  focus:outline-none focus:bg-gray-200 mt-16"
+          className="mobile-menu-button p-4  focus:outline-none focus:bg-gray-200 "
         >
           {isSidebarOpen ? (
             <AiOutlineClose className="h-5 w-5" />
@@ -46,7 +46,7 @@ const Sidebar = () => {
         {/* Sidebar Header */}
         <div className="w-full flex px-4 py-2 shadow-lg rounded-lg justify-between items-center bg-white mx-auto">
           <Link to="/">
-            <h1 className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-blue-500 to-purple-600">
+            <h1 className="text-3xl font-semibold text-transparent bg-clip-text bg-blue-500">
               Earnify
             </h1>
           </Link>

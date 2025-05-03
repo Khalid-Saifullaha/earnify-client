@@ -17,42 +17,53 @@ const Home = () => {
       <HeroSection />
 
       <Container>
-        <TopWorker></TopWorker>
+        <TopWorker />
+      </Container>
 
-        <div>
-          <script
-            src="https://kit.fontawesome.com/a076d05399.js"
-            crossorigin="anonymous"
-          ></script>
-        </div>
-
+      <div>
+        <script
+          src="https://kit.fontawesome.com/a076d05399.js"
+          crossorigin="anonymous"
+        ></script>
+      </div>
+      <Container>
         <Faq />
+      </Container>
 
-        <WhyChooseUs />
+      <WhyChooseUs />
 
-        <section className="bg-white py-16">
-          <div className=" text-center">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6">
-              About Earnify
-            </h2>
-            <p className="text-lg text-gray-700 ">
-              Earnify is a micro-tasking platform that connects people with
-              small jobs they can complete online to earn money. Our mission is
-              to make it easy for anyone, anywhere, to start earning by
-              completing simple tasks.
-            </p>
-            <p className="text-lg text-gray-700 ">
-              Whether you're a skilled worker or a beginner, Earnify offers a
-              variety of tasks suitable for everyone. With fast payments, secure
-              transactions, and a supportive community, Earnify is the perfect
-              platform to get started and start earning.
-            </p>
-          </div>
-        </section>
+      <section className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h2 className="text-4xl md:text-4xl font-extrabold text-gray-600 mb-8">
+            Discover Earnify: Your Gateway to Earning Online
+          </h2>
+          <p className="text-lg text-gray-700 leading-relaxed mb-6">
+            <span className="font-semibold text-blue-500">Earnify</span>{" "}
+            connects you with a world of opportunities to earn money by
+            completing simple online tasks. Whether you're looking to make extra
+            income or start a new career, our platform provides everything you
+            need to succeed.
+          </p>
+          <p className="text-lg text-gray-700 leading-relaxed mb-6">
+            No matter your skill level,{" "}
+            <span className="font-semibold text-blue-500">Earnify</span> offers
+            a wide range of tasks tailored to your abilities. With fast, secure
+            payments, and a community of supportive workers, you can start
+            earning today and build your reputation with trusted buyers.
+          </p>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            Join thousands of satisfied users who trust{" "}
+            <span className="font-semibold text-blue-500">Earnify</span> for
+            their micro-tasking needs. It's easy to get started, and with our
+            reliable system, you can focus on what you do best — while we take
+            care of the rest.
+          </p>
+        </div>
+      </section>
 
-        <Contact />
-
-        <Testimonials></Testimonials>
+      <Contact />
+      <Container>
+        <Testimonials />
       </Container>
     </div>
   );
