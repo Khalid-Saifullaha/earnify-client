@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaPlayCircle, FaUsers, FaCheckCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const HeroSection = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
-    <section className="bg-gray-50  px-4 md:px-20 py-16 md:py-24">
+    <section className="bg-gray-50 px-4 md:px-20 py-16 md:py-24 relative">
       <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center">
         {/* Left side */}
         <div className="space-y-6">
@@ -42,13 +47,13 @@ const HeroSection = () => {
             >
               Learn more
             </Link>
-            <a
-              href="#"
+            <button
+              onClick={openModal}
               className="text-blue-600 hover:text-blue-700 font-semibold py-3 px-6 rounded-full transition duration-300 flex items-center gap-2"
             >
               <FaPlayCircle className="w-5 h-5" />
               Watch video
-            </a>
+            </button>
           </motion.div>
 
           <motion.div
@@ -109,6 +114,31 @@ const HeroSection = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg overflow-hidden shadow-lg max-w-2xl w-full relative">
+            <button
+              onClick={closeModal}
+              className="absolute top-2 right-2 text-gray-600 hover:text-red-500 text-xl font-bold"
+            >
+              &times;
+            </button>
+            <div className="aspect-w-16 aspect-h-9">
+              <iframe
+                width="100%"
+                height="400"
+                src="https://www.youtube.com/embed/hS5CfP8n_js"
+                title="YouTube video"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
