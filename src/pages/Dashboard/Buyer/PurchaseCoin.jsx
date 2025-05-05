@@ -21,7 +21,7 @@ const PurchaseCoin = () => {
       {coinPackages.map((pkg, index) => (
         <div
           key={index}
-          className="p-6 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl shadow-lg cursor-pointer hover:scale-105 transform transition-transform duration-300 hover:shadow-2xl"
+          className="p-6 bg-blue-500 text-white rounded-xl shadow-lg cursor-pointer hover:scale-105 transform transition-transform duration-300 hover:shadow-2xl"
           aria-label={`${pkg.coins} coins for $${pkg.price}`}
           onClick={() => handlePaymentRedirect(pkg.price, pkg.coins)}
         >

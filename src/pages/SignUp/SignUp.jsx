@@ -157,7 +157,7 @@ const SignUp = () => {
           <div>
             <button
               type="submit"
-              className="bg-gradient-to-r from-indigo-600 to-purple-600 w-full rounded-md py-3 text-white"
+              className="bg-blue-500 w-full rounded-md py-3 text-white"
             >
               {loading ? (
                 <TbFidgetSpinner className="animate-spin m-auto" />
